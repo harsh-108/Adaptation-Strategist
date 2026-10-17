@@ -13,16 +13,16 @@ A climate-adaptation planner for data centre growth, for four personas: **data c
 | **Cloud Run** | Runs the whole app (pages and API) as one Python/FastAPI service in Mumbai. Scales to zero when idle, at most one instance, startup CPU boost. |
 | **Firebase Hosting** | The public `web.app` address, passing every request to Cloud Run. |
 | **Firestore** | The team's decision records: approval requests, the hash-chained audit trail, meter summaries and assumptions. Each change is one transaction that also moves the audit trail's head, so the fingerprint chain can't break. Only the server's service account can reach it; the security rules refuse every browser. |
-| **Gemini on Vertex AI** | Reads a question typed on Home and turns it into settings (persona, place, scenario, size) through a JSON schema whose values are limited to the app's own lists, and writes short briefs over evidence the server gives it. One model call per question. |
+| **Gemini on Vertex AI** | Powers the **Ask Gemini** chat window (the ✦ button on every screen). Planning requests ("where should we build…", "compare…") are turned into settings through a JSON schema whose values are limited to the app's own lists, with buttons that open the right screen. Questions about a place are answered from that place's measured scores and evidence, with follow-ups kept per place. One model call per message. |
 | **Google Analytics 4** (Firebase project) | Counts which screens and features are used, only after the visitor presses **Allow analytics**. Events carry short codes (persona, step, format), never typed text or names. |
 | Secret Manager, Cloud Storage, Cloud Scheduler | Keys (never in code), the saved sites/alerts file and hub files, and the 30-minute alert check. |
 | Maps Platform, Sheets and Docs APIs, BigQuery | Live weather, air quality and place search; export of the impact report to the visitor's own Drive; public datasets in the offline data jobs. |
 
 **Sample questions and walkthroughs**
 
-1. **Home → Ask** (as Data centre operator): "We run a campus in Chennai. What should we fix first for 2050?" The answer stays in your persona, shows who answered (Gemini, Groq or the rule engine) and opens the guided flow on Chennai.
-2. **Home → Ask** (as Colocation & hyperscaler): "Where in Southeast Asia should we build our next 100 MW block?" The place becomes the lowest-risk of the seven Southeast Asian matches (Singapore at the time of writing).
-3. **Home → Ask** (as Policy maker): "What would 50 MW a year of data centres mean for Malaysia's grid and water?"
+1. **✦ Ask Gemini** (the chat button at the bottom right of every screen), as Data centre operator: "We run a campus in Chennai. What should we fix first for 2050?" The answer stays in your persona, shows who answered (Gemini, Groq or the rule engine) and offers to open the guided flow on Chennai. Then ask "Why is Tokyo's earthquake risk so high?" for an answer grounded in Tokyo's data, and a follow-up such as "What should we do about it?".
+2. **✦ Ask Gemini** (as Colocation & hyperscaler): "Where in Southeast Asia should we build our next 100 MW block?" The place becomes the lowest-risk of the seven Southeast Asian matches (Singapore at the time of writing).
+3. **✦ Ask Gemini** (as Policy maker): "What would 50 MW a year of data centres mean for Malaysia's grid and water?"
 4. **My workspace → Guided flow → ▶ Watch a sample run** (any persona): the six steps play through to the approval step with the persona's first worked example.
 5. **Policy maker → My workspace → Growth what-if**: set Jakarta, 50 MW a year, 20 years. The Dashboard now shows Indonesia: every screen shares the same inputs.
 6. **Earth view → Data centres**: 1,507 real facilities (OpenStreetMap and PeeringDB) with the climate risk of our 27 places; click a dot, then **Add to team sites**.
@@ -30,10 +30,10 @@ A climate-adaptation planner for data centre growth, for four personas: **data c
 
 **Data and guardrails**
 
-- **Numbers never come from the AI.** Every score is computed in code from measured open data (NASA POWER, World Bank CMIP6, WRI Aqueduct, NOAA IBTrACS, STORM, USGS, Smithsonian GVP, NASA FIRMS, Ember, Grid-India, utility reports, OpenStreetMap, PeeringDB; full list in [Data sources](#data-sources) and the app's Glossary). Each number is labelled **Measured**, **Your data**, **Estimate**, **Assumption** or **No data**; a missing value is shown as No data, never borrowed from another place or estimated.
+- **Numbers never come from the AI.** Every score is computed in code from measured open data (NASA POWER, World Bank CMIP6, WRI Aqueduct, NOAA IBTrACS, STORM, USGS, Smithsonian GVP, NASA FIRMS, Ember, Grid-India, utility reports, OpenStreetMap, PeeringDB; full list in [Data sources](#data-sources); in the app, **Glossary › Data sources** lists all 47 sources and services in five groups, built in, live, reference, AI and cloud, synthetic, with what is connected right now). Each number is labelled **Measured**, **Your data**, **Estimate**, **Assumption** or **No data**; a missing value is shown as No data, never borrowed from another place or estimated.
 - **The AI is boxed in.** Gemini returns JSON that must match a schema with fixed value lists (place IDs come from the 27 places in scope); anything else is dropped. The user's text is treated only as a request, never as instructions. If Gemini is slow, overloaded or unavailable, Groq answers, then a deterministic rule engine, and the answer says which one replied.
 - **Limits and safety.** 40 AI requests per visitor every 10 minutes; changes are refused from other websites; secrets live in Secret Manager; the browser Maps key and the Analytics ID are public by design and the Maps key is restricted to the app's addresses.
-- **Privacy.** Meter files are read in the browser and only a one-line summary is stored; pooled figures hide any group with fewer than 5 operators; analytics only with consent.
+- **Privacy.** Meter files are read in the browser and only a one-line summary is stored; pooled figures hide any group with fewer than 5 operators; analytics only with consent. Details: `/privacy.html` in the app.
 
 **Known limitations**
 
@@ -49,7 +49,8 @@ A climate-adaptation planner for data centre growth, for four personas: **data c
 
 Screens (menu: Home · My workspace · Dashboard · Earth view · Impact · Glossary). Work starts in **My workspace**: explore (My sites, Expansion finder, Growth what-if…), press **Plan this** on a site or place, then finish in the workspace's last tab, the **Guided flow**. Each persona has **one set of inputs** (the guided flow's): Growth what-if, the guided flow, the Dashboard and Impact all read and change the same place, size and horizon, shown in a **Working on** bar on My workspace and the Dashboard.
 
-- **Home**: ask in your own words (Gemini, then Groq, then the rule engine); the answer opens the right persona's guided flow with the inputs filled in. Persona cards and the AI system register.
+- **Ask Gemini** (✦ button at the bottom right of every screen): a chat window. Planning requests open the right persona's guided flow, place detail or comparison with the inputs filled in; questions about a place are answered from its measured data (Gemini, then Groq, then the rule engine; each answer says which).
+- **Home**: the four stat tiles (the sources tile opens the full source register), persona cards and the AI system register.
 - **Guided flow** (the last My workspace tab; six steps: persona → inputs → baseline → adjust → best fit → approval), one per persona:
   - *Operator*: retrofit plan for a site (PUE from an uploaded meter file, resilience = 100 − overall risk, water stress, capex);
   - *Colocation & hyperscaler*: where to build the next block (grid carbon, water risk, climate risk, latency, capex index);
