@@ -168,6 +168,7 @@ g = c.get("/api/health").json()["google"]
 ok("health lists Firestore, Hosting and Analytics", {"firestore", "firebaseHosting", "analytics"} <= set(g) and g["firestore"] is FS and g["firebaseHosting"] is False)
 ok("health sees Firebase Hosting in front", c.get("/api/health", headers={"X-Forwarded-Host": "demo-proj.web.app"}).json()["google"]["firebaseHosting"] is True)
 ok("analytics script served and loaded by the page", c.get("/analytics.js").status_code == 200 and "analytics.js" in c.get("/").text)
+ok("privacy page served", c.get("/privacy.html").status_code == 200 and "drive.file" in c.get("/privacy.html").text)
 r = c.post("/api/requests", json={}, headers={"Origin": "https://demo-proj.web.app", "X-Forwarded-Host": "demo-proj.web.app"})
 ok("Firebase Hosting origin may post (forwarded host)", r.status_code == 400)
 m.ALLOWED_ORIGINS[:] = ["demo-proj.web.app"]
