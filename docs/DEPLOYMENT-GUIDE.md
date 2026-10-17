@@ -147,7 +147,7 @@ What it does, in order:
 3. Creates the bucket `YOUR_PROJECT_ID-atlas`. The deployed app starts with a clean database; your local records stay on your PC.
 4. Creates the Firestore database (Native mode, in the same region) and lets the service account use it.
 5. Copies the keys that are set in `.env` into Secret Manager, and creates a random `TASK_TOKEN` for Cloud Scheduler.
-6. Builds the app from source and deploys it to Cloud Run with Vertex AI and Firestore switched on and hub editing locked: at most one instance and none when idle, 1 GB of memory, startup CPU boost, and CPU kept on while an instance is up so a site's data build and the copy to the bucket finish.
+6. Gives the build account the permissions it needs, then builds the app from source and deploys it to Cloud Run with Vertex AI and Firestore switched on and hub editing locked: at most one instance and none when idle, 1 GB of memory, startup CPU boost, and CPU kept on while an instance is up so a site's data build and the copy to the bucket finish.
 7. Creates the Cloud Scheduler job `atlas-alerts`, which calls `/tasks/alerts` every 30 minutes.
 8. Adds Firebase to the project if needed and deploys Firebase Hosting (`https://YOUR_PROJECT_ID.web.app`) and the Firestore rules, which shut out every browser. Without the Firebase CLI this step is skipped with a message.
 
@@ -254,6 +254,9 @@ The app limits each visitor to 40 AI requests every 10 minutes, which protects y
 | What you see | Why | Fix |
 | --- | --- | --- |
 | `gcloud` is not recognized | PowerShell was open before the install | Close it and open a new window |
+| `gcloud.ps1 cannot be loaded because running scripts is disabled` | PowerShell's script policy | Type `gcloud.cmd` / `firebase.cmd` instead, or run the commands in Command Prompt; the deploy script itself is started with `-ExecutionPolicy Bypass` |
+| Build fails: `…-compute@developer.gserviceaccount.com does not have storage.objects.get access` | New projects don't give the build account what it needs | The script now grants it (Cloud Run Builder, Storage Object Viewer, Logs Writer, Artifact Registry Writer); rerun it |
+| Build log: `failed to resolve version matching: 3.11` | Google's builder only offers Python 3.13+ | `.python-version` must say `3.13` (it does in this version) |
 | "Firebase CLI not found, so the web.app address was skipped" | `firebase-tools` isn't installed | Step 1 point 5, then rerun the script |
 | Firebase deploy says the project has no Firebase | Firebase wasn't added to the project | Step 2 point 5, then rerun the script |
 | Saving on the `web.app` address says "Requests from other sites are refused" | The app doesn't know the Firebase address | Rerun the script; it sets `ALLOWED_ORIGINS` to `https://YOUR_PROJECT_ID.web.app` |
