@@ -21,6 +21,13 @@ function Run([string]$what, [scriptblock]$cmd) { Write-Host "-> $what"; & $cmd; 
 Run "Select project" { gcloud config set project $Project --quiet }
 Run "Enable APIs" { gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com secretmanager.googleapis.com aiplatform.googleapis.com storage.googleapis.com cloudscheduler.googleapis.com firestore.googleapis.com firebase.googleapis.com firebasehosting.googleapis.com weather.googleapis.com airquality.googleapis.com geocoding-backend.googleapis.com sheets.googleapis.com docs.googleapis.com maps-backend.googleapis.com --quiet }
 
+# Building from source runs as the default compute account, which new projects no longer give what the build needs.
+$ProjNum = (gcloud projects describe $Project --format "value(projectNumber)").Trim()
+$Builder = "$ProjNum-compute@developer.gserviceaccount.com"
+foreach ($role in @("roles/run.builder", "roles/storage.objectViewer", "roles/logging.logWriter", "roles/artifactregistry.writer")) {
+  Run "Let the build use $role" { gcloud projects add-iam-policy-binding $Project --member "serviceAccount:$Builder" --role $role --condition None --quiet *> $null }
+}
+
 # Service account the app runs as: Vertex AI, its secrets and its bucket only.
 gcloud iam service-accounts describe $Sa *> $null
 if ($LASTEXITCODE -ne 0) { Run "Create service account" { gcloud iam service-accounts create atlas-run --display-name "Adaptation Strategist" --quiet } }
