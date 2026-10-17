@@ -1,0 +1,16 @@
+node_modules/
+.git/
+.env
+*.log
+scripts/.cache/
+.venv/
+.venv-local/
+__pycache__/
+*.pyc
+instance/
+deploy/
+docs/
+firebase.json
+firestore.rules
+.firebaserc
+.firebase/

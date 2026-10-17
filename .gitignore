@@ -1,0 +1,12 @@
+node_modules/
+.env
+*.log
+scripts/.cache/
+.venv/
+__pycache__/
+*.pyc
+scripts/.cache/
+instance/
+.firebase/
+*.tgz
+*.zip
