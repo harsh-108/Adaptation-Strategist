@@ -496,12 +496,9 @@ PAGES.home=()=>{
   return `<div class="wrap"><section class="hero"><div>
     <span class="eyebrow">Decision intelligence for AI infrastructure under climate stress</span>
     <h1>Every AI workload placed, run and reported responsibly; every site ready for the climate of 2050.</h1>
-    <p class="lede">One app, four workspaces, tuned to JAPAC rules and built on ${SRCS.length+2} open data sources. Pick who you are, ask a question or start the guided flow. Every number shows whether it is measured, yours, an estimate or an assumption.</p>
-    <div class="ask"><input id="askq" aria-label="Ask a question" placeholder="Ask in your own words, or pick an example"><button class="btn" type="button" id="askgo">Ask Gemini</button></div>
-    <div class="exs" id="exs"><button type="button">We run a campus in Chennai. What should we fix first for 2050?</button><button type="button">Where in Southeast Asia should we build our next 100 MW block?</button><button type="button">What would 50 MW a year of data centres mean for Malaysia's grid and water?</button></div>
-    <div class="askres" id="askres" aria-live="polite"></div>
+    <p class="lede">One app, four workspaces, tuned to JAPAC rules and built on ${SRCS.length+2} measured open datasets. Pick who you are, ask Gemini with the ✦ button at the bottom right, or start the guided flow. Every number shows whether it is measured, yours, an estimate or an assumption.</p>
     <div class="ctas"><a class="btn" href="#/work/guided">Start guided flow →</a><a class="btn alt" href="#/impact">Impact</a><a class="btn dark" href="#/earth">Earth view</a></div>
-  </div><div class="stats"><div class="stat"><b>${withData().length}</b><span>JAPAC places scored on 8 hazards</span></div><div class="stat"><b>${SRCS.length+2}</b><span>open data sources, all listed</span></div><div class="stat"><b>4</b><span>personas, each with its own sections</span></div><div class="stat"><b>${RULES.filter(r=>r.src).length}</b><span>JAPAC rules with sources, plus ${RULES.filter(r=>r.st==="App default").length} internal targets</span></div></div></section>
+  </div><div class="stats"><div class="stat"><b>${withData().length}</b><span>JAPAC places scored on 8 hazards</span></div><a class="stat statlink" href="#/glossary/sources"><b>${srcCount().all}</b><span>data sources and services, all listed: ${srcCount().built} built in · ${srcCount().live} live · ${srcCount().ref} reference · ${srcCount().ai} AI &amp; cloud · ${srcCount().syn} synthetic</span></a><div class="stat"><b>4</b><span>personas, each with its own sections</span></div><div class="stat"><b>${RULES.filter(r=>r.src).length}</b><span>JAPAC rules with sources, plus ${RULES.filter(r=>r.st==="App default").length} internal targets</span></div></div></section>
   <section class="section"><h2>Choose your workspace ${info("persona")}</h2><p class="sub">No login. Your choice changes the menu and is remembered in this browser.</p><div class="pcards" style="margin-top:12px">${PK.map((p,i)=>`<button type="button" class="pcard2" data-pick="${p}" aria-pressed="${p===PERSONA}"><div style="display:flex;justify-content:space-between;align-items:center"><span class="src" style="font-family:var(--mono)">0${i+1}</span><span class="chip">${PERS[p].scope}</span></div><h3>${PERS[p].name}</h3><span class="src">${esc(PERS[p].job)}</span><div class="mvp"><b>${PERS[p].dash}</b><br><span class="src">My workspace: ${WTABS[p].map(t=>t[1]).join(" · ")}</span></div><span class="go">${p===PERSONA?"Current workspace ✓":"Switch to this workspace →"}</span></button>`).join("")}</div></section>
   <section class="section"><h2>Shared across every workspace</h2><div class="layers">
     <a class="layer" href="#/work/guided"><span class="tag">GOVERN</span><b>Explain · approve · log</b><span>Each recommendation shows its drivers and sources, needs a named approver and lands in a tamper-evident audit trail.</span><span class="open">Guided flow, step 5 →</span></a>
@@ -516,30 +513,6 @@ PAGES.home=()=>{
 };
 PAGES.home.after=()=>{
   $("view").querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{setPersona(b.dataset.pick);renderNav();route();toast("Workspace: "+PERS[PERSONA].name);});
-  const AUD={op:"op",colo:"colo",hyp:"colo",ten:"ten",pol:"pol"};
-  const curPlace=workPlace;
-  const go=async t=>{t=(t||"").trim();if(!t){return;}const T0=Date.now();const out=$("askres");$("askq").value=t;out.innerHTML='<p class="src"><span class="spin"></span>Gemini is reading your question…</p>';
-    try{const r=await fetch("/api/parse",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:t,hubs:withData().map(h=>({id:h.id,n:h.n,c:h.c,r:h.r})),current:{aud:PERSONA,prio:"bal",layer:"comp",h:"2050",p:"high",region:"Asia-Pacific",site:curPlace(),pins:[],tab:"hub"}})});
-      const j=await r.json();if(!r.ok){throw new Error(j.error||"The request failed.");}
-      const lt=t.toLowerCase(),kw=/\b(policy|regulat|government|ministry|what would .* mean for|grid and water|impact on)\b/.test(lt)?"pol":/\b(workload|cloud region|inferences?|llm|model|tenant|which region)\b/.test(lt)?"ten":/\b(where .*build|build our next|next \d+ ?mw|expand|expanding|colocation|hyperscale|new site|siting)\b/.test(lt)?"colo":/\b(we run|our (campus|site|facility|data cent(re|er))|we operate|fix first|retrofit)\b/.test(lt)?"op":"";
-      /* Stay in the persona the user picked; the persona the question reads like is only offered (review of 17 Oct 2026). */
-      let fit=kw||AUD[j.aud]||PERSONA;if(!kw&&j.intent==="impact"){fit="pol";}else if(!kw&&j.intent==="site"&&fit==="op"){fit="colo";}
-      const p=PERSONA,hh=j.h==="2030"?"2030":"2050",pp=j.p==="mod"?"mod":"high";
-      /* Place: the lowest-risk of the places matching the question; else the one it named; else the persona's current place. */
-      const risk=id=>{const c=comp(scoresOf(HZD[id],hh,pp));return c==null?999:c;};
-      const ranked=(j.candidates||[]).filter(id=>HZD[id]&&inView(id)).sort((a,b)=>risk(a)-risk(b));
-      const site=ranked[0]||(HZD[j.site]&&inView(j.site)?j.site:curPlace());
-      const placeTxt=esc(hub(site).n)+(ranked.length>1?" · lowest risk of "+ranked.length+" matches":"");
-      if(window.STA){STA.event("ask_question",{answered_by:j.source||"",persona:p,suggested:fit,seconds:Math.round((Date.now()-T0)/100)/10});}
-      out.innerHTML=`<div class="note">${esc(j.reply||"")} <span class="src">· ${esc({gemini:"Gemini",groq:"Groq",rules:"Rule engine"}[j.source]||j.source)}</span><div class="exs">${pTag(p)}<span class="chip">Place: ${placeTxt}</span><span class="chip">${hh}, ${pp==="mod"?"SSP2-4.5":"SSP5-8.5"}</span></div><div class="ctas"><button class="btn" type="button" id="askflow">Open the ${esc(PERS[p].name)} guided flow →</button>${fit!==p?`<button class="btn alt sm" type="button" id="askalt">Reads like a ${esc(PERS[fit].name)} question: open it there</button>`:""}</div></div>`;
-      const openAs=q=>{const R=runOf(q),own=!hub(site).site;
-        if(q==="op"){Object.assign(R.f,{site,h:hh,p:pp});}if(q==="colo"){Object.assign(R.f,{cand:site,h:hh,p:pp,blk:j.dcMw>=200?"200":j.dcMw>=100||!j.dcMw?"100":"50"});}
-        if(q==="ten"&&own){Object.assign(R.f,{users:site});}if(q==="pol"&&own){Object.assign(R.f,{hub:site,mw:j.dcMw||R.f.mw});}
-        R.on={};R.step=1;R.choice="mine";R.submitted=null;save();if(q!==PERSONA){setPersona(q);renderNav();}location.hash="#/work/guided";};
-      $("askflow").onclick=()=>openAs(p);const al=$("askalt");if(al){al.onclick=()=>openAs(fit);}
-    }catch(e){out.innerHTML=`<div class="note bad">${esc(e.message)}</div>`;}};
-  $("askgo").onclick=()=>go($("askq").value);$("askq").onkeydown=e=>{if(e.key==="Enter"){go($("askq").value);}};
-  $("exs").onclick=e=>{const b=e.target.closest("button");if(b){go(b.textContent);}};
 };
 
 /* ---------- Guided flow (Strategist engine) ---------- */
@@ -955,10 +928,10 @@ PAGES.glossary=sub=>{sub=GTABS.some(t=>t[0]===sub)?sub:"terms";const sf=SF||PERS
    strategies:()=>{const list=LIB.filter(x=>sf==="all"||x.aud.includes(sf)),cats=[...new Set(list.map(x=>x.cat))];
      return `<div class="controls" style="margin-bottom:12px">${seg([["all","All personas"]].concat(PK.map(q=>[q,PERS[q].name])),sf,"data-sf")}</div><p class="sub" style="margin-bottom:10px">${LIB.length} adaptation strategies. Effects are points taken off each hazard score; cost and lead time are screening estimates. In the guided flow they appear as levers under "Strategy library". ${info("classes")}</p>
      ${cats.map(c=>`<div class="card" style="margin-bottom:12px"><h2>${esc(c)}</h2><div class="tblwrap"><table class="t"><thead><tr><th>Strategy</th><th>Heat</th><th>Flood</th><th>Water</th><th>Grid</th><th>Cost</th><th>Lead time</th><th>For</th></tr></thead><tbody>${list.filter(x=>x.cat===c).map(x=>`<tr><td><b>${esc(x.t)}</b><div class="src">${esc(x.note)}</div></td>${x.e.map(v=>`<td class="num">${v?"−"+v:"–"}</td>`).join("")}<td>${"$".repeat(x.c)}</td><td class="num">${x.lo}–${x.hi} mo</td><td class="src">${x.aud.map(a=>PERS[a].name).join(", ")}</td></tr>`).join("")}</tbody></table></div></div>`).join("")}`;},
-   sources:()=>`<div class="card"><p class="sub" style="margin-bottom:10px">Every source the app uses. This is the only place they are listed; elsewhere each number carries a Measured / Your data / Estimate / Assumption / No data badge.</p><div class="tblwrap"><table class="t"><thead><tr><th>Source</th><th>Used for</th><th>Licence</th></tr></thead><tbody>${SRCS.map(x=>`<tr><td>${esc(x.name)}</td><td class="src">${esc(x.used||"")}</td><td class="src">${esc(x.licence||"")}</td></tr>`).join("")}<tr><td>Google Cloud region carbon data 2025</td><td class="src">Enterprise tenant: region grid intensity and CFE</td><td class="src">Apache 2.0</td></tr><tr><td>OpenStreetMap: data centre buildings and sites (extract via the japan-data-centers project)</td><td class="src">Real data centres: Earth view · Data centres, example sites, facilities near each place (with PeeringDB)</td><td class="src">ODbL, © OpenStreetMap contributors</td></tr></tbody></table></div></div>`};
+   sources:()=>srcRegisterHtml()};
   return `<div class="wrap">${phead("Glossary",{terms:"Every term, how it's worked out and where it comes from",rules:"Rules in force across JAPAC",strategies:"Strategy library",sources:"Data sources"}[sub],{terms:"The same text appears in each ⓘ.",rules:"",strategies:"",sources:""}[sub])}
   <nav class="subnav" aria-label="Glossary">${GTABS.map(t=>`<a href="#/glossary/${t[0]}"${t[0]===sub?' aria-current="page"':""}>${t[1]}</a>`).join("")}</nav>${body[sub]()}</div>`;};
-PAGES.glossary.after=sub=>{const v=$("view"),q=$("gq");if(q){q.oninput=()=>{GQ=q.value;const pos=q.selectionStart;route();const n=$("gq");n.focus();n.setSelectionRange(pos,pos);};}
+PAGES.glossary.after=sub=>{const v=$("view"),q=$("gq");v.querySelectorAll("[data-srcjump]").forEach(a=>a.onclick=e=>{e.preventDefault();const t=$("src-"+a.dataset.srcjump);if(t){t.scrollIntoView({behavior:"smooth",block:"start"});}});if(sub==="sources"&&!HEALTH){loadHealth().then(()=>{if(location.hash.startsWith("#/glossary/sources")){route();}});}if(q){q.oninput=()=>{GQ=q.value;const pos=q.selectionStart;route();const n=$("gq");n.focus();n.setSelectionRange(pos,pos);};}
   v.querySelectorAll("[data-rf]").forEach(b=>b.onclick=()=>{RF=b.dataset.rf;route();});v.querySelectorAll("[data-sf]").forEach(b=>b.onclick=()=>{SF=b.dataset.sf;route();});};
 
 /* ---------- What changes (plan summary) ---------- */
@@ -1162,6 +1135,148 @@ document.addEventListener("click",async e=>{const g=e.target.closest("[data-dcgo
   try{await post("/api/sites",{name:f.n.slice(0,80),mw:"",status:"existing",place:(f.city||(f.hub?hub(f.hub).n:"")||DCF.coverage[f.cc].name).slice(0,120),country:DCF.coverage[f.cc].name,iso2:f.cc,iso3:ISO3[f.cc],lat:f.lat,lon:f.lon});
     await loadSites(true);a.textContent="Added ✓";if(window.STA){STA.event("add_team_site",{from:"data_centre_map",country:f.cc});}toast(f.n+" is now a team site. Its open data takes about 25 seconds; see My workspace · My sites.");}catch(err){a.disabled=false;toast(err.message);}});
 
+
+/* ================= Ask Gemini: floating chat window ================= */
+/* Planning requests ("where should we build…", "compare…", "what would … mean for …") go to /api/parse and come back with
+   buttons that open the guided flow, place detail or compare. Questions about one place go to /api/ask, grounded in that
+   place's measured scores and evidence (the server adds sources and says when a hazard has no data); follow-ups about the
+   same place keep the last few turns. Answers name who replied: Gemini on Vertex AI, then Groq, then the rule engine. */
+const CHAT={open:false,busy:false,log:[],place:null,hist:{},acts:{},n:0};
+const CHAT_EX={op:["We run a campus in Chennai. What should we fix first for 2050?","Why is Tokyo's earthquake risk so high?","Which hazard matters most for Mumbai by 2050?"],
+  colo:["Where in Southeast Asia should we build our next 100 MW block?","Compare Singapore and Kuala Lumpur for a new campus","How exposed is Jakarta to flooding?"],
+  ten:["Which region should our invoice LLM run in to cut carbon?","Is Singapore a safe region to run a bank chatbot?","What drives Seoul's climate risk?"],
+  pol:["What would 50 MW a year of data centres mean for Malaysia's grid and water?","How water-stressed is Chennai by 2050?","Which places in India face the most heat by 2050?"]};
+const AUDMAP={op:"op",colo:"colo",hyp:"colo",ten:"ten",pol:"pol"};
+const PLAN_RX=/\b(where|build|expand|expansion|compare|versus|vs\.?|what would|mean for|plan|retrofit|fix first|guided flow|move|relocate|should we (build|move|run)|run (our|my) )/i;
+const ASK_RX=/\?\s*$|^(why|what|how|is|are|does|do|which|explain|tell me|can|could|should|when)\b/i;
+const SRCNAME={gemini:"Gemini",groq:"Groq",rules:"Rule engine",mock:"Sample"};
+function chatPlacesIn(t){const lt=" "+t.toLowerCase()+" ";return withData().filter(h=>lt.includes(h.n.toLowerCase())).sort((a,b)=>lt.indexOf(a.n.toLowerCase())-lt.indexOf(b.n.toLowerCase())).map(h=>h.id);}
+function chatInit(){
+  if($("chatfab")){return;}
+  const fab=document.createElement("button");fab.id="chatfab";fab.type="button";fab.className="chatfab";fab.setAttribute("aria-controls","chatwin");fab.setAttribute("aria-expanded","false");
+  fab.innerHTML='<span aria-hidden="true">✦</span> Ask Gemini';fab.onclick=()=>chatOpen();
+  const w=document.createElement("section");w.id="chatwin";w.className="chatwin";w.setAttribute("role","dialog");w.setAttribute("aria-label","Ask Gemini");w.hidden=true;
+  w.innerHTML='<div class="chathead"><div><b>✦ Ask Gemini</b><span class="src" id="chatwho"></span></div><div class="chathbtn"><button type="button" id="chatnew" class="btn alt sm" title="Start a new conversation">New chat</button><button type="button" id="chatx" class="chatx" aria-label="Close the chat">×</button></div></div>'+
+    '<div id="chatlog" class="chatlog" aria-live="polite"></div><div id="chatsug" class="chatsug"></div>'+
+    '<form id="chatform" class="chatform"><label for="chatin" class="vh">Your question</label><input id="chatin" maxlength="400" autocomplete="off" placeholder="Ask about a place, a plan or a risk…"><button class="btn sm" type="submit" id="chatsend">Send</button></form>'+
+    '<p class="chatnote">Answers use this app\'s measured data. Gemini on Vertex AI, then Groq, then a rule engine; each answer says which replied.</p>';
+  document.body.appendChild(fab);document.body.appendChild(w);
+  $("chatx").onclick=chatClose;$("chatnew").onclick=()=>{CHAT.log=[];CHAT.place=null;CHAT.hist={};CHAT.acts={};chatRender();$("chatin").focus();};
+  $("chatform").onsubmit=e=>{e.preventDefault();const v=$("chatin").value;$("chatin").value="";chatSend(v);};
+  w.addEventListener("keydown",e=>{if(e.key==="Escape"){chatClose();}});
+  w.addEventListener("click",e=>{const b=e.target.closest("[data-chatact]");if(b&&CHAT.acts[b.dataset.chatact]){CHAT.acts[b.dataset.chatact]();return;}const s2=e.target.closest("[data-chatsug]");if(s2){chatSend(s2.textContent);}});
+  chatRender();}
+function chatOpen(){chatInit();CHAT.open=true;$("chatwin").hidden=false;$("chatfab").hidden=true;$("chatfab").setAttribute("aria-expanded","true");chatRender();setTimeout(()=>{const i=$("chatin");if(i){i.focus();}},30);if(window.STA){STA.event("chat_open",{persona:PERSONA});}}
+function chatClose(){CHAT.open=false;$("chatwin").hidden=true;$("chatfab").hidden=false;$("chatfab").setAttribute("aria-expanded","false");$("chatfab").focus();}
+function chatAct(fn){const k="a"+(++CHAT.n);CHAT.acts[k]=fn;return k;}
+function chatRender(){
+  if(!$("chatlog")){return;}
+  $("chatwho").textContent=" · "+PERS[PERSONA].name+(CHAT.place&&hub(CHAT.place)?" · "+hub(CHAT.place).n:"");
+  $("chatlog").innerHTML=CHAT.log.length?CHAT.log.map(m=>m.who==="you"?`<div class="cmsg you">${esc(m.text)}</div>`:`<div class="cmsg bot${m.bad?" bad":""}">${m.html}</div>`).join("")+(CHAT.busy?'<div class="cmsg bot typing"><span class="spin"></span> Gemini is thinking…</div>':""):
+    `<div class="cmsg bot">Ask about a place, a plan or a risk. I answer from this app's measured data and can open the right screen for you.</div>${CHAT.busy?'<div class="cmsg bot typing"><span class="spin"></span> Gemini is thinking…</div>':""}`;
+  $("chatsug").innerHTML=CHAT.log.length?"":(CHAT_EX[PERSONA]||[]).map(x=>`<button type="button" data-chatsug>${esc(x)}</button>`).join("");
+  const lg=$("chatlog");lg.scrollTop=lg.scrollHeight;$("chatsend").disabled=CHAT.busy;}
+function chatSay(html,bad){CHAT.log.push({who:"bot",html,bad:!!bad});}
+async function chatSend(t){
+  t=String(t||"").trim().slice(0,400);if(!t||CHAT.busy){return;}chatInit();if(!CHAT.open){chatOpen();}
+  CHAT.log.push({who:"you",text:t});CHAT.busy=true;chatRender();const T0=Date.now();
+  const ids=chatPlacesIn(t),askLike=ASK_RX.test(t)&&!(PLAN_RX.test(t)&&!/^(why|how|explain)\b/i.test(t));
+  const placeQ=ids[0]||CHAT.place||(inScope(hub(workPlace())||{})?workPlace():null);
+  try{if(askLike&&placeQ&&!hub(placeQ).site){await chatAsk(t,placeQ,T0);}else{await chatPlan(t,T0);}}
+  catch(e){chatSay(esc(e.message||"Something went wrong. Try again in a moment."),true);}
+  CHAT.busy=false;chatRender();}
+function chatPost(url,body){return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok){throw new Error(j.error||"The request failed.");}return j;});}
+function chatTag(src,T0,extra){return `<span class="ctag">${esc(SRCNAME[src]||src||"")}${extra?" · "+extra:""} · ${Math.round((Date.now()-T0)/100)/10} s</span>`;}
+async function chatAsk(t,id,T0){
+  const h=hub(id),z=HZD[id],sc=scoresOf(z,"2050","high"),st=scoresOf(z,"today","high"),c=comp(sc);
+  const strategies=libFor(sc,PERSONA).slice(0,5).map(o=>({title:o.x.t,category:o.x.cat,cost:"$".repeat(o.x.c),leadTime:o.x.lo+" to "+o.x.hi+" months",riskReduction:(Math.round(o.ben*10)/10)+" points",note:o.x.note}));
+  const hist=CHAT.hist[id]||(CHAT.hist[id]=[]);
+  const j=await chatPost("/api/ask",{question:t,hub:{id,name:h.n,country:h.c,composite:c,band:band(c),compositeToday:comp(st),scores:Object.fromEntries(HZK.map((k,i)=>[k,sc[i]]))},
+    scenario:{h:"2050",p:"high",pathway:"SSP5-8.5 (high emissions)",audience:PERS[PERSONA].name,priority:"balanced"},strategies,history:hist.slice(-6)});
+  hist.push({q:t,a:j.answer||""});CHAT.place=id;
+  if(window.STA){STA.event("ask_question",{mode:"place",answered_by:j.source||"",persona:PERSONA,place:id,seconds:Math.round((Date.now()-T0)/100)/10});}
+  const a=chatAct(()=>{MV.sel=id;location.hash="#/earth/place";});
+  chatSay(`${esc(j.answer||"No answer came back.")}<div class="cacts"><button type="button" class="btn alt sm" data-chatact="${a}">Place detail: ${esc(h.n)} →</button></div>${chatTag(j.source,T0,"grounded in "+h.n+"'s data, 2050 SSP5-8.5")}`);}
+async function chatPlan(t,T0){
+  const j=await chatPost("/api/parse",{text:t,hubs:withData().map(h=>({id:h.id,n:h.n,c:h.c,r:h.r})),current:{aud:PERSONA,prio:"bal",layer:"comp",h:"2050",p:"high",region:"Asia-Pacific",site:inScope(hub(workPlace())||{})?workPlace():exPlace(PERSONA),pins:[],tab:"hub"}});
+  const lt=t.toLowerCase(),kw=/\b(policy|regulat|government|ministry|what would .* mean for|grid and water|impact on)\b/.test(lt)?"pol":/\b(workload|cloud region|inferences?|llm|model|tenant|which region)\b/.test(lt)?"ten":/\b(where .*build|build our next|next \d+ ?mw|expand|expanding|colocation|hyperscale|new site|siting)\b/.test(lt)?"colo":/\b(we run|our (campus|site|facility|data cent(re|er))|we operate|fix first|retrofit)\b/.test(lt)?"op":"";
+  /* Stay in the persona the user picked; the persona the question reads like is only offered. */
+  let fit=kw||AUDMAP[j.aud]||PERSONA;if(!kw&&j.intent==="impact"){fit="pol";}else if(!kw&&j.intent==="site"&&fit==="op"){fit="colo";}
+  const p=PERSONA,hh=j.h==="2030"?"2030":"2050",pp=j.p==="mod"?"mod":"high";
+  const risk=id=>{const c=comp(scoresOf(HZD[id],hh,pp));return c==null?999:c;};
+  const ranked=(j.candidates||[]).filter(id=>HZD[id]&&inView(id)).sort((a,b)=>risk(a)-risk(b));
+  const site=ranked[0]||(HZD[j.site]&&inView(j.site)?j.site:workPlace());
+  const pins=(j.pins||[]).filter(id=>HZD[id]&&inView(id));
+  CHAT.place=site;
+  if(window.STA){STA.event("ask_question",{mode:"plan",answered_by:j.source||"",persona:p,suggested:fit,seconds:Math.round((Date.now()-T0)/100)/10});}
+  const openAs=q=>{const R=runOf(q),own=!hub(site).site;
+    if(q==="op"){Object.assign(R.f,{site,h:hh,p:pp});}if(q==="colo"){Object.assign(R.f,{cand:site,h:hh,p:pp,blk:j.dcMw>=200?"200":j.dcMw>=100||!j.dcMw?"100":"50"});}
+    if(q==="ten"&&own){Object.assign(R.f,{users:site});}if(q==="pol"&&own){Object.assign(R.f,{hub:site,mw:j.dcMw||R.f.mw});}
+    R.on={};R.step=1;R.choice="mine";R.submitted=null;save();if(q!==PERSONA){setPersona(q);renderNav();}location.hash="#/work/guided";chatRender();};
+  const btns=[`<button type="button" class="btn sm" data-chatact="${chatAct(()=>openAs(p))}">Open the ${esc(PERS[p].name)} guided flow →</button>`];
+  if(fit!==p){btns.push(`<button type="button" class="btn alt sm" data-chatact="${chatAct(()=>openAs(fit))}">Open it as ${esc(PERS[fit].name)}</button>`);}
+  if(pins.length>=2){btns.push(`<button type="button" class="btn alt sm" data-chatact="${chatAct(()=>{S.pins=pins.slice(0,6);save();location.hash="#/earth/compare";})}">Compare ${pins.map(x=>esc(hub(x).n)).join(", ")}</button>`);}
+  btns.push(`<button type="button" class="btn alt sm" data-chatact="${chatAct(()=>{MV.sel=site;location.hash="#/earth/place";})}">Place detail: ${esc(hub(site).n)}</button>`);
+  chatSay(`${esc(j.reply||"")}<div class="cchips">${pTag(p)}<span class="chip">${esc(hub(site).n)}${ranked.length>1?" · lowest risk of "+ranked.length+" matches":""}</span><span class="chip">${hh}, ${pp==="mod"?"SSP2-4.5":"SSP5-8.5"}</span></div><div class="cacts">${btns.join("")}</div>${chatTag(j.source,T0)}`);}
+
+
+/* ================= source register (Glossary > Data sources) ================= */
+/* Every source and service the app uses, in five groups. Status comes from the app's own /api/health, so a judge can see
+   what is connected right now (for example Weather from Open-Meteo until the Google key is added). */
+let HEALTH=null;
+async function loadHealth(){try{const r=await fetch("/api/health");if(r.ok){HEALTH=await r.json();}}catch(e){}}
+function srcRegister(){
+  const H=HEALTH||{},G=H.google||{},L=(H.data||{}).live||{},P=H.providers||{},known=!!HEALTH;
+  const OK=["ok","Connected"],SB=["fb","Standby (fallback)"],st=(on,off)=>!known?null:on?OK:["off",off||"Not configured"],alt=on=>!known?null:on?SB:OK;
+  const internal=RULES.filter(r=>r.st==="App default").length;
+  const built=SRCS.map(x=>({n:x.name,u:x.used,l:x.licence,url:x.url})).concat([
+    {n:"Google Cloud region carbon data, 2025",u:"Enterprise tenant: region grid intensity and carbon-free energy",l:"Apache 2.0",url:"https://github.com/GoogleCloudPlatform/region-carbon-info"},
+    {n:"OpenStreetMap: data centre buildings and sites",u:"Earth view · Data centres, example sites, data centres near each place (with PeeringDB)",l:"ODbL, © OpenStreetMap contributors",url:"https://www.openstreetmap.org/copyright"}]);
+  const live=[
+    {n:"Google Weather API",u:"Conditions now: temperature, wet-bulb, today's high; heat alerts",l:"Google Maps Platform terms",s:st(G.weather)},
+    {n:"Open-Meteo forecast",u:"The same readings when Google Weather isn't set up",l:"CC BY 4.0 (free for non-commercial use)",s:alt(G.weather)},
+    {n:"Google Air Quality API",u:"PM2.5 now; air-quality alerts",l:"Google Maps Platform terms",s:st(G.airQuality)},
+    {n:"Open-Meteo air quality (CAMS)",u:"PM2.5 when Google Air Quality isn't set up",l:"CC BY 4.0",s:alt(G.airQuality)},
+    {n:"OpenAQ",u:"Measured PM2.5 from the nearest stations",l:"Source licences vary, cited per station",s:st(L.openaq)},
+    {n:"Open-Meteo flood (GloFAS)",u:"River flow now against its 30-day median",l:"CC BY 4.0",s:st(L.openMeteo!==false)},
+    {n:"Electricity Maps",u:"Grid carbon intensity right now",l:"Electricity Maps terms",s:st(L.electricityMaps)},
+    {n:"NASA POWER API",u:"Warming stripes: yearly mean temperature 1991–2020 for the place in use",l:"NASA open data",s:known?OK:null},
+    {n:"GDACS",u:"Disaster alerts near a place, last 180 days",l:"GDACS terms (EC JRC)",s:st(P.news)},
+    {n:"NASA EONET",u:"Natural events near a place",l:"NASA open data",s:st(P.news)},
+    {n:"ReliefWeb",u:"Humanitarian reports for the country",l:"ReliefWeb terms (UN OCHA)",s:st(P.news)},
+    {n:"News feeds added in Manage hubs (RSS)",u:"Local news near a place",l:"Each publisher's terms",s:known?["ok","Admin-managed"]:null},
+    {n:"Google Geocoding API",u:"Place search in My sites and Manage hubs",l:"Google Maps Platform terms",s:st(G.geocoding)},
+    {n:"Open-Meteo geocoding",u:"Place search when Google Geocoding isn't set up",l:"CC BY 4.0",s:alt(G.geocoding)},
+    {n:"World Bank API",u:"Country codes and regions for a searched place",l:"CC BY 4.0",s:known?OK:null}];
+  const ref=[
+    {n:"JAPAC rulebook",u:`${RULES.filter(r=>r.src).length} regulations, each linked to its official source, plus ${internal} internal targets marked App default (see Glossary · Rules in force)`,l:"Official publications"},
+    {n:"Published data-centre totals (Data Center Map via Visual Capitalist)",u:"Data centres tab: how complete the map is, per country",l:"Cited figures, February 2026"}];
+  const ai=[
+    {n:"Gemini (on Vertex AI when deployed)",u:"Ask Gemini chat: reads questions, writes short answers grounded in each place's data",l:"Google Cloud terms",s:!known?null:G.vertexAI?["ok","Connected · Vertex AI"]:P.gemini?["ok","Connected · AI Studio key"]:["off","Not configured"]},
+    {n:"Groq",u:"Backup answerer when Gemini is busy",l:"Groq terms",s:st(P.groq)},
+    {n:"Rule engine",u:"Deterministic last fallback, no AI",l:"Part of this app",s:known?OK:null},
+    {n:"Firestore",u:"Approvals, audit trail, meter summaries, assumptions",l:"Google Cloud",s:st(G.firestore,"Local SQLite")},
+    {n:"Cloud Storage",u:"Saved sites, alerts and hub files",l:"Google Cloud",s:st(G.cloudStorage,"Local disk")},
+    {n:"Firebase Hosting",u:"The public web.app address",l:"Firebase",s:!known?null:G.firebaseHosting?OK:["fb","Opened by another address"]},
+    {n:"Cloud Scheduler",u:"Alert check every 30 minutes",l:"Google Cloud",s:st(G.scheduler,"In-app timer")},
+    {n:"Google Maps JavaScript API",u:"Data centres map (OpenStreetMap tiles otherwise)",l:"Google Maps Platform terms",s:st(G.mapsJavaScript,"Using OpenStreetMap")},
+    {n:"Google Sheets and Docs APIs",u:"Export the impact report to the visitor's own Drive",l:"Google APIs terms",s:st(G.sheetsDocsExport)},
+    {n:"Google Analytics 4",u:"Counts screens and features used, only after the visitor allows it",l:"Google Analytics terms",s:st(G.analytics)}];
+  const syn=[{n:"Sample meter files (2)",u:"Show how a meter upload works; labelled Fictional on screen and never pooled",l:"Synthetic"}];
+  return [["built","Measured data built into the scores","Downloaded and condensed by the data jobs; every hazard score comes from these.",built],
+          ["live","Live feeds, fetched while you use the app","Conditions now, alerts, recent events and place search. They never change a score.",live],
+          ["ref","Reference lists","Rules and published totals the app cites.",ref],
+          ["ai","AI and Google Cloud services","What runs the app. None of them adds numbers to the scores.",ai],
+          ["syn","Synthetic, clearly labelled","The only made-up data in the app.",syn]];}
+function srcCount(){const g=srcRegister(),c={all:0};g.forEach(x=>{c[x[0]]=x[3].length;c.all+=x[3].length;});return c;}
+function srcRegisterHtml(){
+  const g=srcRegister(),c=srcCount(),chip=s2=>s2?`<span class="sst ${s2[0]}">${esc(s2[1])}</span>`:'<span class="sst off">–</span>';
+  return `<div class="card"><p class="sub" style="margin-bottom:10px">Every data source and service the app uses: <b>${c.all}</b> in five groups. This is the only place they are all listed; elsewhere each number carries a Measured / Your data / Estimate / Assumption / No data badge. Status shows what is connected on this server right now. How visitors' data is handled: <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>.</p>
+    <div class="srcsum">${g.map(x=>`<a href="#src-${x[0]}" data-srcjump="${x[0]}"><b>${x[3].length}</b><span>${esc(x[1])}</span></a>`).join("")}</div></div>
+  ${g.map(x=>{const hasS=x[3].some(r=>r.s!==undefined);return `<div class="card" id="src-${x[0]}" style="margin-top:16px"><h2>${esc(x[1])} <span class="src">${x[3].length}</span></h2><p class="sub">${esc(x[2])}</p>
+    <div class="tblwrap" style="margin-top:8px"><table class="t"><thead><tr><th>Source</th><th>Used for</th><th>Licence / terms</th>${hasS?"<th>Status</th>":""}</tr></thead><tbody>${x[3].map(r=>`<tr><td>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(r.n)}</a>`:esc(r.n)}</td><td class="src">${esc(r.u||"")}</td><td class="src">${esc(r.l||"")}</td>${hasS?`<td>${chip(r.s)}</td>`:""}</tr>`).join("")}</tbody></table></div>
+    ${x[0]==="live"?'<p class="src" style="margin-top:8px">US-only feeds in the code (EIA grid demand, the GB carbon intensity API) aren\'t listed: no place in the JAPAC scope uses them.</p>':""}</div>`;}).join("")}`;}
+
 /* ================= router ================= */
 function renderNav(){
   $("nav").innerHTML=NAV.filter(n=>allowed(n[0],PERSONA)).map(n=>`<a href="#/${n[0]}${n[0]==="work"?"/"+WTABS[PERSONA][0][0]:""}" data-r="${n[0]}"${n[0]==="work"?' class="lead"':""}>${n[1]}</a>`).join("");
@@ -1178,9 +1293,9 @@ function route(){
   document.title=({home:"Home",guided:"Guided flow",dash:"Dashboard",work:"My workspace",earth:"Earth view",impact:"Impact",hubs:"Manage hubs",rules:"Rules",approvals:"Approvals",glossary:"Glossary",more:"More"}[page])+" · Adaptation Strategist";
   if(same){window.scrollTo(0,y);}else{window.scrollTo(0,0);}route._last=location.hash;drawStripes();if(window.STA){STA.page(page+(sub?"/"+sub:""),document.title);}
 }
-$("persona").addEventListener("change",e=>{setPersona(e.target.value);PLAY=null;renderNav();route();toast("Workspace: "+PERS[PERSONA].name);});
+$("persona").addEventListener("change",e=>{setPersona(e.target.value);if(CHAT.open||$("chatlog")){chatRender();}PLAY=null;renderNav();route();toast("Workspace: "+PERS[PERSONA].name);});
 window.addEventListener("hashchange",route);
 renderNav();
-Promise.all([loadAssumptions(),loadSites(),loadAlerts(),loadDCF(),loadGcfg()]).finally(route);
+Promise.all([loadAssumptions(),loadSites(),loadAlerts(),loadDCF(),loadGcfg(),loadHealth()]).finally(()=>{route();chatInit();});
 setInterval(()=>{loadAlerts().then(()=>{if(location.hash.startsWith("#/work/alerts")){alertsRender();}});},5*60*1000);
 })();

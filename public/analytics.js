@@ -21,7 +21,7 @@ function clean(p){const o={};Object.keys(p||{}).forEach(k=>{const v=p[k];if(type
 function bar(){
   if(document.getElementById("ga-bar")){return;}
   const b=document.createElement("div");b.id="ga-bar";b.className="ga-bar";b.setAttribute("role","region");b.setAttribute("aria-label","Usage analytics");
-  b.innerHTML='<p><b>Help improve this demo?</b> Allow anonymous usage analytics (Google Analytics). It counts which screens and features are used; no questions, names or site details are sent.</p>'+
+  b.innerHTML='<p><b>Help improve this demo?</b> Allow anonymous usage analytics (Google Analytics). It counts which screens and features are used; no questions, names or site details are sent. <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></p>'+
     '<div class="ctas"><button class="btn sm" type="button" data-ga="yes">Allow analytics</button><button class="btn alt sm" type="button" data-ga="no">No thanks</button></div>';
   b.addEventListener("click",e=>{const x=e.target.closest("[data-ga]");if(!x){return;}STA.choose(x.dataset.ga==="yes");});
   document.body.appendChild(b);}

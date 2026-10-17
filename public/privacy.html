@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Adaptation Strategist</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<style>
+  :root{--bg:#F2F4EF;--panel:#fff;--ink:#13221C;--muted:#4A5A52;--line:#D9E0DA;--accent:#1D6B50;--dark:#0E1B16;--mint:#7FD1A8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif}
+  header{background:var(--dark);color:#fff;padding:16px max(16px,env(safe-area-inset-left,0px))}
+  header a{color:var(--mint);text-decoration:none;font-weight:600}
+  main{max-width:760px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-left,0px)) 56px}
+  h1{font-size:30px;line-height:1.2;margin:0 0 6px}
+  h2{font-size:19px;margin:28px 0 8px}
+  p,li{max-width:68ch}
+  .muted{color:var(--muted)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:16px}
+  a{color:var(--accent)}
+  button{font:inherit;font-weight:600;min-height:40px;padding:8px 14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+  button.alt{background:#fff;color:var(--accent)}
+  #ga-state{margin-left:8px}
+  ul{padding-left:20px}
+</style>
+</head>
+<body>
+<header><a href="./">← Adaptation Strategist</a></header>
+<main>
+  <h1>Privacy</h1>
+  <p class="muted">How this app handles what visitors type, upload and do. Last updated 18 October 2026.</p>
+
+  <div class="card">
+    <b>In short:</b> there are no accounts and no login, and the app sets no cookies of its own. Usage analytics run only if you allow them. Meter files never leave your browser. Anything you save in the shared workspace (sites, approvals, assumptions) is visible to everyone who uses this app, so don't enter personal details you wouldn't want shared.
+  </div>
+
+  <h2>Questions you ask (Ask Gemini)</h2>
+  <p>Your question goes to the app's server and from there to <b>Gemini on Google Cloud's Vertex AI</b> to be answered. If Gemini is busy, it goes to <b>Groq</b>, and if neither answers, a rule engine inside the app replies. The app doesn't store your questions or the answers. The conversation stays in your browser window and is cleared when you start a new chat or reload. Like any web server, Google Cloud keeps standard request logs (time, address requested, your IP address) for about 30 days for running and securing the service.</p>
+
+  <h2>What you save in the shared workspace</h2>
+  <p>Sites, approval requests and decisions (including the names you type), assumptions and meter summaries are stored in <b>Firestore</b> and <b>Cloud Storage</b> in Google Cloud's Mumbai region. They are shared by everyone using the app, and the audit trail is permanent by design: entries can't be edited or deleted, so tampering can be detected.</p>
+
+  <h2>Meter files</h2>
+  <p>A meter file you upload is read <b>in your browser</b>. Hourly readings never leave your device; only a one-line summary (country, size group, PUE, WUE, completeness) is sent, and pooled figures hide any group with fewer than 5 operators.</p>
+
+  <h2>Usage analytics (Google Analytics)</h2>
+  <p>Only if you press <b>Allow analytics</b>. The app then loads Google Analytics 4, which sets its own cookies (<code>_ga</code>) on this site and counts which screens and features are used. The app sends short codes only (persona, step, export format, place id), never what you type or names. Google Analytics doesn't log or store IP addresses. Event data is kept for the period set in the property (2 months by default). Your choice is remembered in your browser.</p>
+  <p>Your choice here: <b id="ga-state">checking…</b></p>
+  <p><button type="button" id="ga-yes">Allow analytics</button> <button type="button" class="alt" id="ga-no">Turn analytics off</button></p>
+  <p class="muted">Turning it off stops anything further being sent. To remove cookies already set, clear this site's data in your browser.</p>
+
+  <h2>Export to Google Sheets or Docs</h2>
+  <p>When you press an export button, you sign in to Google in a pop-up and grant the permission <code>drive.file</code>: the app can only create and open the files it makes for you, not any other file in your Drive. This happens entirely in your browser: the app's server never receives your Google sign-in or your files.</p>
+
+  <h2>Maps and other content</h2>
+  <p>Map tiles come straight from OpenStreetMap (or Google Maps when that is set up), and the map library from cdnjs. Your browser requests them directly, so those providers see a normal web request. Live readings and recent events are fetched by the server, not your browser.</p>
+
+  <h2>Who processes data</h2>
+  <ul>
+    <li>Google Cloud and Firebase: hosting (Cloud Run, Firebase Hosting), storage (Firestore, Cloud Storage), Gemini on Vertex AI, and Google Analytics and Maps when used.</li>
+    <li>Groq: backup AI answers, only when Gemini doesn't answer.</li>
+    <li>OpenStreetMap and cdnjs: map tiles and the map library loaded by your browser.</li>
+  </ul>
+
+  <h2>Questions</h2>
+  <p>Open an issue on the project's repository: <a href="https://github.com/harsh-108/Adaptation-Strategist/issues" target="_blank" rel="noopener">github.com/harsh-108/Adaptation-Strategist</a>.</p>
+</main>
+<script>
+(function(){
+  "use strict";
+  var KEY="st-analytics";
+  function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function put(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+  function show(){var c=get();document.getElementById("ga-state").textContent=c==="yes"?"analytics allowed":c==="no"?"analytics off":"not chosen yet (nothing is sent)";}
+  document.getElementById("ga-yes").onclick=function(){put("yes");show();};
+  document.getElementById("ga-no").onclick=function(){put("no");show();};
+  show();
+})();
+</script>
+</body>
+</html>

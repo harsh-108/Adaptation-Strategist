@@ -142,10 +142,54 @@
 .hv small{color:var(--muted)}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:baseline}
 /* Google Analytics consent bar (analytics.js): nothing is measured until "Allow analytics" */
-.ga-bar{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:760px;margin:0 auto;background:var(--panel,#fff);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent,#1D6B50);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.ga-bar{position:fixed;z-index:1090;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:760px;margin:0 auto;background:var(--panel,#fff);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent,#1D6B50);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;}
 .ga-bar p{margin:0;flex:1 1 320px;font-size:14px;line-height:1.5}
 .ga-bar .ctas{margin:0}
 /* Public demo: hub and news-feed editing is switched off (DEMO_LOCK_HUBS); the server refuses it too */
 body.hubs-locked .card:has(#h-title),body.hubs-locked [data-hedit],body.hubs-locked [data-hrm],body.hubs-locked [data-frm],
 body.hubs-locked #feeds :is(label:has(#f-name),label:has(#f-url),label:has(#f-cty),#f-add){display:none}
 body.hubs-locked .row2e:has(#h-title){grid-template-columns:1fr}
+/* Ask Gemini: floating chat window (every screen) */
+.chatfab{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:1100;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 18px;border-radius:999px;border:1px solid #2f4a3e;background:var(--dark);color:#fff;font-weight:600;font-size:15px;box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer}
+.chatfab span{color:var(--mint)}
+.chatfab:hover{filter:brightness(1.12)}
+.chatfab:focus-visible,.chatx:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.chatwin{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:1100;width:min(400px,calc(100vw - 32px));height:min(600px,calc(100vh - 110px));display:flex;flex-direction:column;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.25);overflow:hidden}
+.chatwin[hidden],.chatfab[hidden]{display:none}
+body:has(.ga-bar) .chatfab,body:has(.ga-bar) .chatwin{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+@media (max-width:640px){body:has(.ga-bar) .chatfab,body:has(.ga-bar) .chatwin{bottom:calc(210px + env(safe-area-inset-bottom,0px))}.chatwin{height:min(560px,calc(100vh - 90px))}}
+.chathead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px 10px 16px;background:var(--dark);color:#fff}
+.chathead b{font-size:15px}.chathead b::first-letter{color:var(--mint)}
+.chathead .src{color:var(--onDark2);font-size:12.5px}
+.chathbtn{display:flex;gap:6px;align-items:center}
+.chathbtn .btn{min-height:32px;padding:4px 10px;white-space:nowrap;background:transparent;color:#fff;border-color:#3B5247}
+.chatx{background:transparent;border:0;color:#fff;font-size:24px;line-height:1;width:36px;height:36px;border-radius:8px;cursor:pointer}
+.chatx:hover{background:rgba(255,255,255,.08)}
+.chatlog{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--panel2,#F7F9F6)}
+.cmsg{max-width:88%;padding:9px 12px;border-radius:12px;font-size:14.5px;line-height:1.5;overflow-wrap:anywhere}
+.cmsg.you{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.cmsg.bot{align-self:flex-start;background:var(--panel);border:1px solid var(--line);border-bottom-left-radius:4px}
+.cmsg.bad{border-color:#d8b4a8;background:#fbefea}
+.cmsg.typing{color:var(--muted)}
+.cchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cacts .btn{min-height:34px;padding:5px 10px;font-size:13.5px}
+.ctag{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.chatsug{display:flex;flex-direction:column;gap:6px;padding:0 14px 10px;background:var(--panel2,#F7F9F6)}
+.chatsug button{text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;padding:8px 10px;font-size:13.5px;cursor:pointer}
+.chatsug button:hover{border-color:var(--accent);color:var(--accent)}
+.chatform{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line);background:var(--panel)}
+.chatform input{flex:1;min-width:0;min-height:40px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:inherit;font-size:14.5px}
+.chatform .btn{min-height:40px}
+.chatnote{margin:0;padding:0 12px 10px;font-size:11.5px;color:var(--muted);background:var(--panel)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media print{.chatfab,.chatwin{display:none!important}}
+/* Source register (Glossary > Data sources) and the Home tile that links to it */
+.srcsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:6px}
+.srcsum a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);background:var(--panel2,#F7F9F6)}
+.srcsum a:hover{border-color:var(--accent)}
+.srcsum b{font-size:22px;line-height:1.1}.srcsum span{font-size:13px;color:var(--muted)}
+.sst{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.sst.ok{background:#E3EFE8;color:#1D6B50}.sst.fb{background:#FBF1DA;color:#7A5300}.sst.off{background:#EEF0EE;color:#5A6660}
+a.statlink{text-decoration:none;color:var(--onDark)}a.statlink:hover{color:#fff}a.statlink:hover b{text-decoration:underline}a.statlink:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+a.statlink span{font-size:13px}
