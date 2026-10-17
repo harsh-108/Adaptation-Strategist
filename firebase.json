@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "public": "deploy/firebase/public",
+    "ignore": ["**/.*"],
+    "rewrites": [{ "source": "**", "run": { "serviceId": "atlas-web", "region": "asia-south1" } }]
+  },
+  "firestore": { "rules": "firestore.rules" }
+}

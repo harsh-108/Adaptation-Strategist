@@ -1,0 +1,1 @@
+Adaptation Strategist: this site is served by Cloud Run behind Firebase Hosting. Every page and API call is passed to the app.

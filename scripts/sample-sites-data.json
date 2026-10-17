@@ -1,0 +1,1995 @@
+{
+ "warnings": [
+  "S-OP3 water: left out 1 Aqueduct sub-basin(s) with no valid stress ratio"
+ ],
+ "records": {
+  "S-OP1": {
+   "lat": 13.1079,
+   "lon": 80.1626,
+   "place": "Ambattur, Chennai",
+   "iso3": "IND",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 94,
+     "m30": 110,
+     "h30": 112,
+     "m50": 130,
+     "h50": 145
+    },
+    "rawCdd": {
+     "t": 3618,
+     "m30": 3823,
+     "h30": 3848,
+     "m50": 4053,
+     "h50": 4225
+    },
+    "warmingC": {
+     "m30": 0.46,
+     "h30": 0.52,
+     "m50": 1.09,
+     "h50": 1.53
+    },
+    "t": 77,
+    "m30": 84,
+    "h30": 85,
+    "m50": 94,
+    "h50": 100,
+    "basis": "1991-2020 at the site (NASA POWER): 94 days a year at or above 35 °C and 3618 cooling degree days. Future adds the IND country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Extremely High (>80%)",
+    "basin": "['Delta', 'India East Coast']",
+    "basins": 1,
+    "radiusKm": 25,
+    "raw": {
+     "t": 4.62,
+     "m30": 4.76,
+     "h30": 4.74,
+     "m50": 4.77,
+     "h50": 4.71
+    },
+    "change": {
+     "m30": 1.11,
+     "h30": 1.09,
+     "m50": 1.11,
+     "h50": 1.06
+    },
+    "t": 92,
+    "m30": 95,
+    "h30": 95,
+    "m50": 95,
+    "h50": 94,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 1 sub-basin(s) within 25 km; the largest is Extremely High (>80%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 4.12,
+     "coastal": 1.89
+    },
+    "labels": {
+     "river": "Extremely High (more than 1 in 100)",
+     "coastal": "Low - Medium (9 in 1,000,000 to 7 in 100,000)"
+    },
+    "t": 82,
+    "basis": "Today is the worse of Aqueduct riverine (Extremely High (more than 1 in 100)) and coastal (Low - Medium (9 in 1,000,000 to 7 in 100,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "grid-india"
+    ],
+    "t": 17,
+    "raw": {
+     "state": "Tamil Nadu",
+     "ensPct": 0.0103,
+     "peakShortDaysPct": 0,
+     "days": 818,
+     "shortMU": 29.3,
+     "years": "2022-23 to 2024-25"
+    },
+    "summary": "0.01% of electricity demand in Tamil Nadu went unsupplied and the state was short at its daily peak on 0.0% of days (818 daily reports, 2022-23 to 2024-25, Grid-India; state-level)",
+    "basis": "0.01% of electricity demand in Tamil Nadu went unsupplied and the state was short at its daily peak on 0.0% of days (818 daily reports, 2022-23 to 2024-25, Grid-India; state-level). These are shortages of supply measured by the load despatch centres, not local distribution faults. Score = average of unmet energy on a log scale (0.001% = 0, 1.0% = 100) and days short at peak (50% of days = 100). State-level data; no projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "modelled",
+     "src": [
+      "ibtracs",
+      "storm"
+     ],
+     "t": 26,
+     "raw": {
+      "storms": 17,
+      "severe": 2,
+      "years": 45,
+      "maxWindKt": 85,
+      "strongest": "Unnamed (1984)",
+      "stormsPerDecade": 3.8,
+      "severePerDecade": 0.4
+     },
+     "summary": "17 tropical storms passed within 150 km in 1980-2024, 2 of them at typhoon/hurricane strength within 100 km; strongest Unnamed (1984) at 85 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 17 tropical storms passed within 150 km in 1980-2024, 2 of them at typhoon/hurricane strength within 100 km; strongest Unnamed (1984) at 85 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). High emissions: STORM's 2015-2050 climate (SSP5-8.5, median of 4 models) changes how often 20 m/s winds occur here by +2% and 29 m/s (about Category 1) by -4%; applied to the history for 2030 and 2050. STORM has no moderate-emissions run, so the moderate pathway keeps the history.",
+     "m30": 26,
+     "m50": 26,
+     "h30": 26,
+     "h50": 26,
+     "change": {
+      "basin": "NI",
+      "ratio20": 1.02,
+      "ratio29": 0.96
+     }
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 1488,
+      "nearest": "Barren Island"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Barren Island at 1488 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Barren Island at 1488 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "m6": 0,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0
+     },
+     "summary": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 35,
+     "raw": {
+      "perYear": 18.2,
+      "worstYear": 2017,
+      "worstCount": 63,
+      "years": "2015-2024"
+     },
+     "summary": "18.2 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2017 (63)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 18.2 a year on average, most in 2017 (63). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 5.22,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 17,
+     "radiusKm": 50,
+     "locatedShare": 0.83,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 670,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 751
+     }
+    },
+    "electricity": {
+     "demandTWh": 2082.8,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember"
+    },
+    "seaLevel": {
+     "km": 14.9,
+     "gauge": 205,
+     "src": "ar6-sealevel",
+     "baseline": "1995-2014",
+     "mod": {
+      "2030": {
+       "lo": 3.8,
+       "mid": 6.8,
+       "hi": 10.3
+      },
+      "2050": {
+       "lo": 10.2,
+       "mid": 15.6,
+       "hi": 22.9
+      }
+     },
+     "high": {
+      "2030": {
+       "lo": 4.2,
+       "mid": 7.2,
+       "hi": 10.9
+      },
+      "2050": {
+       "lo": 13.2,
+       "mid": 18.5,
+       "hi": 26.1
+      }
+     }
+    }
+   }
+  },
+  "S-OP2": {
+   "lat": 19.1146,
+   "lon": 72.8912,
+   "place": "Chandivali, Mumbai",
+   "iso3": "IND",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 108,
+     "m30": 114,
+     "h30": 115,
+     "m50": 124,
+     "h50": 134
+    },
+    "rawCdd": {
+     "t": 3159,
+     "m30": 3363,
+     "h30": 3389,
+     "m50": 3593,
+     "h50": 3765
+    },
+    "warmingC": {
+     "m30": 0.46,
+     "h30": 0.52,
+     "m50": 1.09,
+     "h50": 1.53
+    },
+    "t": 75,
+    "m30": 80,
+    "h30": 81,
+    "m50": 86,
+    "h50": 92,
+    "basis": "1991-2020 at the site (NASA POWER): 108 days a year at or above 35 °C and 3159 cooling degree days. Future adds the IND country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Low - Medium (10-20%)",
+    "basin": "['Kalu', 'Savitri', 'Kalinadi']",
+    "basins": 3,
+    "radiusKm": 25,
+    "raw": {
+     "t": 1.42,
+     "m30": 2.41,
+     "h30": 2.39,
+     "m50": 2.57,
+     "h50": 2.51
+    },
+    "change": {
+     "m30": 1.97,
+     "h30": 1.94,
+     "m50": 2.19,
+     "h50": 2.11
+    },
+    "t": 28,
+    "m30": 48,
+    "h30": 48,
+    "m50": 51,
+    "h50": 50,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 3 sub-basin(s) within 25 km; the largest is Low - Medium (10-20%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 4.07,
+     "coastal": 3.01
+    },
+    "labels": {
+     "river": "Extremely High (more than 1 in 100)",
+     "coastal": "High (3 in 10,000 to 2 in 1,000)"
+    },
+    "t": 81,
+    "basis": "Today is the worse of Aqueduct riverine (Extremely High (more than 1 in 100)) and coastal (High (3 in 10,000 to 2 in 1,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "wb-doingbusiness"
+    ],
+    "t": 51,
+    "raw": {
+     "saidi": 2.73,
+     "saifi": 2.18,
+     "year": 2019,
+     "entity": "IND",
+     "where": "Mumbai (measured there)"
+    },
+    "summary": "2.73 hours without power and 2.18 interruptions per customer a year in Mumbai (measured there) (2019, World Bank)",
+    "basis": "Utility-measured outages in Mumbai (measured there) (2019, World Bank Doing Business): 2.73 hours without power and 2.18 interruptions per customer a year. Score = average of the two on log scales (0.1 h = 0, 100 h = 100; 0.1 = 0, 30 interruptions = 100). No projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "modelled",
+     "src": [
+      "ibtracs",
+      "storm"
+     ],
+     "t": 8,
+     "raw": {
+      "storms": 4,
+      "severe": 1,
+      "years": 45,
+      "maxWindKt": 120,
+      "strongest": "Tauktae (2021)",
+      "stormsPerDecade": 0.9,
+      "severePerDecade": 0.2
+     },
+     "summary": "4 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Tauktae (2021) at 120 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 4 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Tauktae (2021) at 120 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). High emissions: STORM's 2015-2050 climate (SSP5-8.5, median of 4 models) changes how often 20 m/s winds occur here by +4% and 29 m/s (about Category 1) by +9%; applied to the history for 2030 and 2050. STORM has no moderate-emissions run, so the moderate pathway keeps the history.",
+     "m30": 8,
+     "m50": 8,
+     "h30": 8,
+     "h50": 8,
+     "change": {
+      "basin": "NI",
+      "ratio20": 1.04,
+      "ratio29": 1.09
+     }
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 2038,
+      "nearest": "Ashikule Volcanic Field"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Ashikule Volcanic Field at 2038 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Ashikule Volcanic Field at 2038 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 2,
+     "geophysical": true,
+     "raw": {
+      "m6": 1,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0.1
+     },
+     "summary": "1 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "1 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 29,
+     "raw": {
+      "perYear": 12.4,
+      "worstYear": 2015,
+      "worstCount": 21,
+      "years": "2015-2024"
+     },
+     "summary": "12.4 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2015 (21)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 12.4 a year on average, most in 2015 (21). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 5.29,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 49,
+     "radiusKm": 50,
+     "locatedShare": 0.83,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 670,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 751
+     }
+    },
+    "electricity": {
+     "demandTWh": 2082.8,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember"
+    },
+    "seaLevel": {
+     "km": 22.6,
+     "gauge": 43,
+     "src": "ar6-sealevel",
+     "baseline": "1995-2014",
+     "mod": {
+      "2030": {
+       "lo": 5.4,
+       "mid": 7.8,
+       "hi": 11
+      },
+      "2050": {
+       "lo": 12.4,
+       "mid": 16.9,
+       "hi": 23.6
+      }
+     },
+     "high": {
+      "2030": {
+       "lo": 5.9,
+       "mid": 8.2,
+       "hi": 11.4
+      },
+      "2050": {
+       "lo": 15,
+       "mid": 19.8,
+       "hi": 27
+      }
+     }
+    }
+   }
+  },
+  "S-OP3": {
+   "lat": 28.5415,
+   "lon": 77.2402,
+   "place": "Okhla, New Delhi",
+   "iso3": "IND",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 145,
+     "m30": 153,
+     "h30": 154,
+     "m50": 164,
+     "h50": 172
+    },
+    "rawCdd": {
+     "t": 3062,
+     "m30": 3223,
+     "h30": 3244,
+     "m50": 3410,
+     "h50": 3552
+    },
+    "warmingC": {
+     "m30": 0.46,
+     "h30": 0.52,
+     "m50": 1.09,
+     "h50": 1.53
+    },
+    "t": 87,
+    "m30": 91,
+    "h30": 92,
+    "m50": 97,
+    "h50": 100,
+    "basis": "1991-2020 at the site (NASA POWER): 145 days a year at or above 35 °C and 3062 cooling degree days. Future adds the IND country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Extremely High (>80%)",
+    "basin": "['Yamuna 1']",
+    "basins": 5,
+    "radiusKm": 25,
+    "raw": {
+     "t": 5,
+     "m30": 5,
+     "h30": 5,
+     "m50": 5,
+     "h50": 5
+    },
+    "change": {
+     "m30": 1.16,
+     "h30": 1.23,
+     "m50": 1.25,
+     "h50": 1.04
+    },
+    "t": 100,
+    "m30": 100,
+    "h30": 100,
+    "m50": 100,
+    "h50": 100,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 5 sub-basin(s) within 25 km; the largest is Extremely High (>80%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 3.04,
+     "coastal": 0
+    },
+    "labels": {
+     "river": "High (6 in 1,000 to 1 in 100)",
+     "coastal": "Low (0 to 9 in 1,000,000)"
+    },
+    "t": 61,
+    "basis": "Today is the worse of Aqueduct riverine (High (6 in 1,000 to 1 in 100)) and coastal (Low (0 to 9 in 1,000,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "wb-doingbusiness"
+    ],
+    "t": 56,
+    "raw": {
+     "saidi": 4.59,
+     "saifi": 2.55,
+     "year": 2019,
+     "entity": "IND",
+     "where": "Delhi (measured there)"
+    },
+    "summary": "4.59 hours without power and 2.55 interruptions per customer a year in Delhi (measured there) (2019, World Bank)",
+    "basis": "Utility-measured outages in Delhi (measured there) (2019, World Bank Doing Business): 4.59 hours without power and 2.55 interruptions per customer a year. Score = average of the two on log scales (0.1 h = 0, 100 h = 100; 0.1 = 0, 30 interruptions = 100). No projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "today",
+     "src": [
+      "ibtracs"
+     ],
+     "t": 0,
+     "raw": {
+      "storms": 0,
+      "severe": 0,
+      "years": 45,
+      "maxWindKt": 0,
+      "strongest": null,
+      "stormsPerDecade": 0,
+      "severePerDecade": 0
+     },
+     "summary": "no tropical storm passed within 150 km in 1980-2024 (NOAA IBTrACS)",
+     "basis": "Measured history: No tropical storm passed within 150 km in 1980-2024 (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). No projection yet."
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 901,
+      "nearest": "Ashikule Volcanic Field"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Ashikule Volcanic Field at 901 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Ashikule Volcanic Field at 901 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 3,
+     "geophysical": true,
+     "raw": {
+      "m6": 2,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0.3
+     },
+     "summary": "2 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "2 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 21,
+     "raw": {
+      "perYear": 6.9,
+      "worstYear": 2016,
+      "worstCount": 22,
+      "years": "2015-2024"
+     },
+     "summary": "6.9 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2016 (22)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 6.9 a year on average, most in 2016 (22). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 4.89,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 30,
+     "radiusKm": 50,
+     "locatedShare": 0.83,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 670,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 751
+     }
+    },
+    "electricity": {
+     "demandTWh": 2082.8,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember"
+    }
+   }
+  },
+  "S-CO1": {
+   "lat": 17.4363,
+   "lon": 78.3822,
+   "place": "Gachibowli, Hyderabad",
+   "iso3": "IND",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 102,
+     "m30": 108,
+     "h30": 109,
+     "m50": 118,
+     "h50": 125
+    },
+    "rawCdd": {
+     "t": 2862,
+     "m30": 3064,
+     "h30": 3089,
+     "m50": 3293,
+     "h50": 3464
+    },
+    "warmingC": {
+     "m30": 0.46,
+     "h30": 0.52,
+     "m50": 1.09,
+     "h50": 1.53
+    },
+    "t": 70,
+    "m30": 74,
+    "h30": 75,
+    "m50": 80,
+    "h50": 85,
+    "basis": "1991-2020 at the site (NASA POWER): 102 days a year at or above 35 °C and 2862 cooling degree days. Future adds the IND country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Extremely High (>80%)",
+    "basin": "['Musi / Aler']",
+    "basins": 2,
+    "radiusKm": 25,
+    "raw": {
+     "t": 4.88,
+     "m30": 5,
+     "h30": 5,
+     "m50": 5,
+     "h50": 5
+    },
+    "change": {
+     "m30": 1.03,
+     "h30": 1.06,
+     "m50": 1.01,
+     "h50": 1.02
+    },
+    "t": 98,
+    "m30": 100,
+    "h30": 100,
+    "m50": 100,
+    "h50": 100,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 2 sub-basin(s) within 25 km; the largest is Extremely High (>80%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 1.27,
+     "coastal": 0
+    },
+    "labels": {
+     "river": "Low - Medium (1 in 1,000 to 2 in 1,000)",
+     "coastal": "Low (0 to 9 in 1,000,000)"
+    },
+    "t": 25,
+    "basis": "Today is the worse of Aqueduct riverine (Low - Medium (1 in 1,000 to 2 in 1,000)) and coastal (Low (0 to 9 in 1,000,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "grid-india"
+    ],
+    "t": 0,
+    "raw": {
+     "state": "Telangana",
+     "ensPct": 0,
+     "peakShortDaysPct": 0,
+     "days": 818,
+     "shortMU": 0,
+     "years": "2022-23 to 2024-25"
+    },
+    "summary": "0.0% of electricity demand in Telangana went unsupplied and the state was short at its daily peak on 0.0% of days (818 daily reports, 2022-23 to 2024-25, Grid-India; state-level)",
+    "basis": "0.0% of electricity demand in Telangana went unsupplied and the state was short at its daily peak on 0.0% of days (818 daily reports, 2022-23 to 2024-25, Grid-India; state-level). These are shortages of supply measured by the load despatch centres, not local distribution faults. Score = average of unmet energy on a log scale (0.001% = 0, 1.0% = 100) and days short at peak (50% of days = 100). State-level data; no projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "modelled",
+     "src": [
+      "ibtracs",
+      "storm"
+     ],
+     "t": 1,
+     "raw": {
+      "storms": 1,
+      "severe": 0,
+      "years": 45,
+      "maxWindKt": 56,
+      "strongest": "Unnamed (1996)",
+      "stormsPerDecade": 0.2,
+      "severePerDecade": 0
+     },
+     "summary": "1 tropical storms passed within 150 km in 1980-2024, 0 of them at typhoon/hurricane strength within 100 km; strongest Unnamed (1996) at 56 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 1 tropical storms passed within 150 km in 1980-2024, 0 of them at typhoon/hurricane strength within 100 km; strongest Unnamed (1996) at 56 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). High emissions: STORM's 2015-2050 climate (SSP5-8.5, median of 4 models) changes how often 20 m/s winds occur here by -18% and 29 m/s (about Category 1) by -70%; applied to the history for 2030 and 2050. STORM has no moderate-emissions run, so the moderate pathway keeps the history.",
+     "m30": 1,
+     "m50": 1,
+     "h30": 1,
+     "h50": 1,
+     "change": {
+      "basin": "NI",
+      "ratio20": 0.82,
+      "ratio29": 0.3
+     }
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 1758,
+      "nearest": "Barren Island"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Barren Island at 1758 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Barren Island at 1758 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 2,
+     "geophysical": true,
+     "raw": {
+      "m6": 1,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0.1
+     },
+     "summary": "1 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "1 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 36,
+     "raw": {
+      "perYear": 19.9,
+      "worstYear": 2017,
+      "worstCount": 29,
+      "years": "2015-2024"
+     },
+     "summary": "19.9 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2017 (29)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 19.9 a year on average, most in 2017 (29). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 5.36,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 11,
+     "radiusKm": 50,
+     "locatedShare": 0.83,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 670,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 751
+     }
+    },
+    "electricity": {
+     "demandTWh": 2082.8,
+     "year": 2025,
+     "entity": "IND",
+     "src": "owid-ember"
+    }
+   }
+  },
+  "S-CO2": {
+   "lat": 1.4322,
+   "lon": 103.599,
+   "place": "Iskandar Puteri, Johor",
+   "iso3": "MYS",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 0,
+     "m30": 0,
+     "h30": 0,
+     "m50": 0,
+     "h50": 0
+    },
+    "rawCdd": {
+     "t": 3274,
+     "m30": 3493,
+     "h30": 3511,
+     "m50": 3672,
+     "h50": 3803
+    },
+    "warmingC": {
+     "m30": 0.56,
+     "h30": 0.65,
+     "m50": 1.05,
+     "h50": 1.5
+    },
+    "t": 41,
+    "m30": 44,
+    "h30": 44,
+    "m50": 46,
+    "h50": 48,
+    "basis": "1991-2020 at the site (NASA POWER): 0 days a year at or above 35 °C and 3274 cooling degree days. Future adds the MYS country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Low (<10%)",
+    "basin": "['Muar', 'Malaysia Coast 1', 'Ambat', 'Belitung', 'Endau']",
+    "basins": 1,
+    "radiusKm": 25,
+    "raw": {
+     "t": 0.01,
+     "m30": 1.06,
+     "h30": 1.04,
+     "m50": 1.54,
+     "h50": 1.58
+    },
+    "change": {
+     "m30": 2.07,
+     "h30": 2.04,
+     "m50": 2.9,
+     "h50": 2.96
+    },
+    "t": 0,
+    "m30": 21,
+    "h30": 21,
+    "m50": 31,
+    "h50": 32,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 1 sub-basin(s) within 25 km; the largest is Low (<10%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 1.12,
+     "coastal": 1.38
+    },
+    "labels": {
+     "river": "Low - Medium (1 in 1,000 to 2 in 1,000)",
+     "coastal": "Low - Medium (9 in 1,000,000 to 7 in 100,000)"
+    },
+    "t": 28,
+    "basis": "Today is the worse of Aqueduct riverine (Low - Medium (1 in 1,000 to 2 in 1,000)) and coastal (Low - Medium (9 in 1,000,000 to 7 in 100,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "none",
+    "src": [],
+    "basis": "No measured outage data for this place. The World Bank measured Kuala Lumpur for MYS; the atlas doesn't borrow or average other cities' figures."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "today",
+     "src": [
+      "ibtracs"
+     ],
+     "t": 5,
+     "raw": {
+      "storms": 1,
+      "severe": 1,
+      "years": 45,
+      "maxWindKt": 65,
+      "strongest": "Vamei (2001)",
+      "stormsPerDecade": 0.2,
+      "severePerDecade": 0.2
+     },
+     "summary": "1 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Vamei (2001) at 65 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 1 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Vamei (2001) at 65 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). No projection yet."
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 402,
+      "nearest": "Marapi"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Marapi at 402 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Marapi at 402 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "m6": 0,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0
+     },
+     "summary": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 24,
+     "raw": {
+      "perYear": 8.7,
+      "worstYear": 2016,
+      "worstCount": 21,
+      "years": "2015-2024"
+     },
+     "summary": "8.7 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2016 (21)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 8.7 a year on average, most in 2016 (21). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 4.59,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 6,
+     "radiusKm": 50,
+     "locatedShare": 0.7,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 602,
+     "year": 2025,
+     "entity": "MYS",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 669
+     }
+    },
+    "electricity": {
+     "demandTWh": 199.9,
+     "year": 2025,
+     "entity": "MYS",
+     "src": "owid-ember"
+    },
+    "seaLevel": {
+     "km": 10.8,
+     "gauge": 1896,
+     "src": "ar6-sealevel",
+     "baseline": "1995-2014",
+     "mod": {
+      "2030": {
+       "lo": 3.3,
+       "mid": 8,
+       "hi": 13.3
+      },
+      "2050": {
+       "lo": 9.8,
+       "mid": 18.4,
+       "hi": 28.5
+      }
+     },
+     "high": {
+      "2030": {
+       "lo": 3.9,
+       "mid": 8.6,
+       "hi": 13.8
+      },
+      "2050": {
+       "lo": 12.5,
+       "mid": 21.2,
+       "hi": 31.5
+      }
+     }
+    }
+   }
+  },
+  "S-CO3": {
+   "lat": 35.8183,
+   "lon": 140.1327,
+   "place": "Inzai, Chiba",
+   "iso3": "JPN",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 7,
+     "m30": 13,
+     "h30": 13,
+     "m50": 18,
+     "h50": 22
+    },
+    "rawCdd": {
+     "t": 839,
+     "m30": 981,
+     "h30": 1001,
+     "m50": 1081,
+     "h50": 1167
+    },
+    "warmingC": {
+     "m30": 0.91,
+     "h30": 1.01,
+     "m50": 1.54,
+     "h50": 2.02
+    },
+    "t": 13,
+    "m30": 17,
+    "h30": 17,
+    "m50": 20,
+    "h50": 22,
+    "basis": "1991-2020 at the site (NASA POWER): 7 days a year at or above 35 °C and 839 cooling degree days. Future adds the JPN country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Medium - High (20-40%)",
+    "basin": "['Watarase-gawa / Tone-gawa']",
+    "basins": 2,
+    "radiusKm": 25,
+    "raw": {
+     "t": 2.85,
+     "m30": 2.83,
+     "h30": 2.82,
+     "m50": 2.75,
+     "h50": 2.74
+    },
+    "change": {
+     "m30": 0.98,
+     "h30": 0.98,
+     "m50": 0.93,
+     "h50": 0.92
+    },
+    "t": 57,
+    "m30": 57,
+    "h30": 56,
+    "m50": 55,
+    "h50": 55,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 2 sub-basin(s) within 25 km; the largest is Medium - High (20-40%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 0.7,
+     "coastal": 0
+    },
+    "labels": {
+     "river": "Low (0 to 1 in 1,000)",
+     "coastal": "Low (0 to 9 in 1,000,000)"
+    },
+    "t": 14,
+    "basis": "Today is the worse of Aqueduct riverine (Low (0 to 1 in 1,000)) and coastal (Low (0 to 9 in 1,000,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "none",
+    "src": [],
+    "basis": "No measured outage data for this place. The World Bank measured Osaka and Tokyo for JPN; the atlas doesn't borrow or average other cities' figures."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "modelled",
+     "src": [
+      "ibtracs",
+      "storm"
+     ],
+     "t": 97,
+     "raw": {
+      "storms": 44,
+      "severe": 13,
+      "years": 45,
+      "maxWindKt": 116,
+      "strongest": "Oscar (1995)",
+      "stormsPerDecade": 9.8,
+      "severePerDecade": 2.9
+     },
+     "summary": "44 tropical storms passed within 150 km in 1980-2024, 13 of them at typhoon/hurricane strength within 100 km; strongest Oscar (1995) at 116 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 44 tropical storms passed within 150 km in 1980-2024, 13 of them at typhoon/hurricane strength within 100 km; strongest Oscar (1995) at 116 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). High emissions: STORM's 2015-2050 climate (SSP5-8.5, median of 4 models) changes how often 20 m/s winds occur here by +31% and 29 m/s (about Category 1) by +73%; applied to the history for 2030 and 2050. STORM has no moderate-emissions run, so the moderate pathway keeps the history.",
+     "m30": 97,
+     "m50": 97,
+     "h30": 100,
+     "h50": 100,
+     "change": {
+      "basin": "WP",
+      "ratio20": 1.31,
+      "ratio29": 1.73
+     }
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 118,
+      "nearest": "Akagisan"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Akagisan at 118 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Akagisan at 118 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 100,
+     "geophysical": true,
+     "raw": {
+      "m6": 154,
+      "m7": 11,
+      "years": 75,
+      "perDecade": 20.5
+     },
+     "summary": "154 earthquakes of magnitude 6+ within 300 km in 1950-2024 (11 of 7+) (USGS)",
+     "basis": "154 earthquakes of magnitude 6+ within 300 km in 1950-2024 (11 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 27,
+     "raw": {
+      "perYear": 10.6,
+      "worstYear": 2015,
+      "worstCount": 20,
+      "years": "2015-2024"
+     },
+     "summary": "10.6 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2015 (20)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 10.6 a year on average, most in 2015 (20). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 3.77,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 37,
+     "radiusKm": 50,
+     "locatedShare": 0.5,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 477,
+     "year": 2025,
+     "entity": "JPN",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 578
+     }
+    },
+    "electricity": {
+     "demandTWh": 1029.9,
+     "year": 2025,
+     "entity": "JPN",
+     "src": "owid-ember"
+    }
+   }
+  },
+  "S-TE1": {
+   "lat": 1.3367,
+   "lon": 103.8938,
+   "place": "Changi, Singapore",
+   "iso3": "SGP",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 0,
+     "m30": 0,
+     "h30": 0,
+     "m50": 0,
+     "h50": 0
+    },
+    "rawCdd": {
+     "t": 3274,
+     "m30": 3500,
+     "h30": 3522,
+     "m50": 3676,
+     "h50": 3818
+    },
+    "warmingC": {
+     "m30": 0.59,
+     "h30": 0.7,
+     "m50": 1.08,
+     "h50": 1.5
+    },
+    "t": 41,
+    "m30": 44,
+    "h30": 44,
+    "m50": 46,
+    "h50": 48,
+    "basis": "1991-2020 at the site (NASA POWER): 0 days a year at or above 35 °C and 3274 cooling degree days. Future adds the SGP country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Low (<10%)",
+    "basin": "['Muar', 'Malaysia Coast 1', 'Ambat', 'Belitung', 'Endau']",
+    "basins": 2,
+    "radiusKm": 25,
+    "raw": {
+     "t": 0.01,
+     "m30": 0.24,
+     "h30": 0.22,
+     "m50": 0.29,
+     "h50": 0.33
+    },
+    "change": {
+     "m30": 1.22,
+     "h30": 1.21,
+     "m50": 1.27,
+     "h50": 1.3
+    },
+    "t": 0,
+    "m30": 5,
+    "h30": 4,
+    "m50": 6,
+    "h50": 7,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 2 sub-basin(s) within 25 km; the largest is Low (<10%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 1.12,
+     "coastal": 1.38
+    },
+    "labels": {
+     "river": "Low - Medium (1 in 1,000 to 2 in 1,000)",
+     "coastal": "Low - Medium (9 in 1,000,000 to 7 in 100,000)"
+    },
+    "t": 28,
+    "basis": "Today is the worse of Aqueduct riverine (Low - Medium (1 in 1,000 to 2 in 1,000)) and coastal (Low - Medium (9 in 1,000,000 to 7 in 100,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "wb-doingbusiness"
+    ],
+    "t": 1,
+    "raw": {
+     "saidi": 0.06,
+     "saifi": 0.11,
+     "year": 2019,
+     "entity": "SGP",
+     "where": "Singapore (the city the World Bank measured for SGP)"
+    },
+    "summary": "0.06 hours without power and 0.11 interruptions per customer a year in Singapore (the city the World Bank measured for SGP) (2019, World Bank)",
+    "basis": "Utility-measured outages in Singapore (the city the World Bank measured for SGP) (2019, World Bank Doing Business): 0.06 hours without power and 0.11 interruptions per customer a year. Score = average of the two on log scales (0.1 h = 0, 100 h = 100; 0.1 = 0, 30 interruptions = 100). No projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "today",
+     "src": [
+      "ibtracs"
+     ],
+     "t": 5,
+     "raw": {
+      "storms": 1,
+      "severe": 1,
+      "years": 45,
+      "maxWindKt": 65,
+      "strongest": "Vamei (2001)",
+      "stormsPerDecade": 0.2,
+      "severePerDecade": 0.2
+     },
+     "summary": "1 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Vamei (2001) at 65 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 1 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Vamei (2001) at 65 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). No projection yet."
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 425,
+      "nearest": "Marapi"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Marapi at 425 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Marapi at 425 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "m6": 0,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0
+     },
+     "summary": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 15,
+     "raw": {
+      "perYear": 3.2,
+      "worstYear": 2015,
+      "worstCount": 8,
+      "years": "2015-2024"
+     },
+     "summary": "3.2 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2015 (8)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 3.2 a year on average, most in 2015 (8). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 4.59,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 46,
+     "radiusKm": 50,
+     "locatedShare": 1,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 497,
+     "year": 2025,
+     "entity": "SGP",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 507
+     }
+    },
+    "electricity": {
+     "demandTWh": 60.4,
+     "year": 2025,
+     "entity": "SGP",
+     "src": "owid-ember"
+    },
+    "seaLevel": {
+     "km": 8.9,
+     "gauge": 1746,
+     "src": "ar6-sealevel",
+     "baseline": "1995-2014",
+     "mod": {
+      "2030": {
+       "lo": 4.3,
+       "mid": 8.5,
+       "hi": 13.3
+      },
+      "2050": {
+       "lo": 11.5,
+       "mid": 19.1,
+       "hi": 28.4
+      }
+     },
+     "high": {
+      "2030": {
+       "lo": 4.8,
+       "mid": 9,
+       "hi": 13.7
+      },
+      "2050": {
+       "lo": 14.3,
+       "mid": 21.9,
+       "hi": 31.4
+      }
+     }
+    }
+   }
+  },
+  "S-TE2": {
+   "lat": 1.3238,
+   "lon": 103.6951,
+   "place": "Jurong West, Singapore",
+   "iso3": "SGP",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 0,
+     "m30": 0,
+     "h30": 0,
+     "m50": 0,
+     "h50": 0
+    },
+    "rawCdd": {
+     "t": 3274,
+     "m30": 3500,
+     "h30": 3522,
+     "m50": 3676,
+     "h50": 3818
+    },
+    "warmingC": {
+     "m30": 0.59,
+     "h30": 0.7,
+     "m50": 1.08,
+     "h50": 1.5
+    },
+    "t": 41,
+    "m30": 44,
+    "h30": 44,
+    "m50": 46,
+    "h50": 48,
+    "basis": "1991-2020 at the site (NASA POWER): 0 days a year at or above 35 °C and 3274 cooling degree days. Future adds the SGP country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "Low (<10%)",
+    "basin": "['Muar', 'Malaysia Coast 1', 'Ambat', 'Belitung', 'Endau']",
+    "basins": 2,
+    "radiusKm": 25,
+    "raw": {
+     "t": 0.01,
+     "m30": 0.3,
+     "h30": 0.28,
+     "m50": 0.36,
+     "h50": 0.39
+    },
+    "change": {
+     "m30": 1.22,
+     "h30": 1.21,
+     "m50": 1.27,
+     "h50": 1.3
+    },
+    "t": 0,
+    "m30": 6,
+    "h30": 6,
+    "m50": 7,
+    "h50": 8,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 2 sub-basin(s) within 25 km; the largest is Low (<10%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 1.12,
+     "coastal": 1.38
+    },
+    "labels": {
+     "river": "Low - Medium (1 in 1,000 to 2 in 1,000)",
+     "coastal": "Low - Medium (9 in 1,000,000 to 7 in 100,000)"
+    },
+    "t": 28,
+    "basis": "Today is the worse of Aqueduct riverine (Low - Medium (1 in 1,000 to 2 in 1,000)) and coastal (Low - Medium (9 in 1,000,000 to 7 in 100,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "wb-doingbusiness"
+    ],
+    "t": 1,
+    "raw": {
+     "saidi": 0.06,
+     "saifi": 0.11,
+     "year": 2019,
+     "entity": "SGP",
+     "where": "Singapore (the city the World Bank measured for SGP)"
+    },
+    "summary": "0.06 hours without power and 0.11 interruptions per customer a year in Singapore (the city the World Bank measured for SGP) (2019, World Bank)",
+    "basis": "Utility-measured outages in Singapore (the city the World Bank measured for SGP) (2019, World Bank Doing Business): 0.06 hours without power and 0.11 interruptions per customer a year. Score = average of the two on log scales (0.1 h = 0, 100 h = 100; 0.1 = 0, 30 interruptions = 100). No projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "today",
+     "src": [
+      "ibtracs"
+     ],
+     "t": 5,
+     "raw": {
+      "storms": 1,
+      "severe": 1,
+      "years": 45,
+      "maxWindKt": 65,
+      "strongest": "Vamei (2001)",
+      "stormsPerDecade": 0.2,
+      "severePerDecade": 0.2
+     },
+     "summary": "1 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Vamei (2001) at 65 kt (NOAA IBTrACS)",
+     "basis": "Measured history: 1 tropical storms passed within 150 km in 1980-2024, 1 of them at typhoon/hurricane strength within 100 km; strongest Vamei (2001) at 65 kt (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). No projection yet."
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 405,
+      "nearest": "Marapi"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Marapi at 405 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Marapi at 405 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "m6": 0,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0
+     },
+     "summary": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 12,
+     "raw": {
+      "perYear": 2.1,
+      "worstYear": 2015,
+      "worstCount": 9,
+      "years": "2015-2024"
+     },
+     "summary": "2.1 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2015 (9)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 2.1 a year on average, most in 2015 (9). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 4.59,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 46,
+     "radiusKm": 50,
+     "locatedShare": 1,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 497,
+     "year": 2025,
+     "entity": "SGP",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 507
+     }
+    },
+    "electricity": {
+     "demandTWh": 60.4,
+     "year": 2025,
+     "entity": "SGP",
+     "src": "owid-ember"
+    },
+    "seaLevel": {
+     "km": 3.8,
+     "gauge": 1275,
+     "src": "ar6-sealevel",
+     "baseline": "1995-2014",
+     "mod": {
+      "2030": {
+       "lo": 1.9,
+       "mid": 6.4,
+       "hi": 11.5
+      },
+      "2050": {
+       "lo": 7.2,
+       "mid": 15.4,
+       "hi": 25.2
+      }
+     },
+     "high": {
+      "2030": {
+       "lo": 2.4,
+       "mid": 6.8,
+       "hi": 11.9
+      },
+      "2050": {
+       "lo": 9.9,
+       "mid": 18.2,
+       "hi": 28.2
+      }
+     }
+    }
+   }
+  },
+  "S-TE3": {
+   "lat": -33.7947,
+   "lon": 150.8695,
+   "place": "Western Sydney",
+   "iso3": "AUS",
+   "emZone": null,
+   "eia": null,
+   "ukCarbon": false,
+   "heat": {
+    "kind": "modelled",
+    "unit": "days a year at or above 35 °C",
+    "unit2": "cooling degree days (base 18 °C)",
+    "src": [
+     "nasa-power",
+     "cckp"
+    ],
+    "raw": {
+     "t": 17,
+     "m30": 21,
+     "h30": 21,
+     "m50": 25,
+     "h50": 27
+    },
+    "rawCdd": {
+     "t": 506,
+     "m30": 609,
+     "h30": 618,
+     "m50": 703,
+     "h50": 773
+    },
+    "warmingC": {
+     "m30": 0.76,
+     "h30": 0.88,
+     "m50": 1.39,
+     "h50": 1.81
+    },
+    "t": 12,
+    "m30": 15,
+    "h30": 15,
+    "m50": 17,
+    "h50": 19,
+    "basis": "1991-2020 at the site (NASA POWER): 17 days a year at or above 35 °C and 506 cooling degree days. Future adds the AUS country-average warming from the World Bank CMIP6 ensemble median. Score = half hot days (150 = 100), half degree days (4000 = 100)."
+   },
+   "water": {
+    "kind": "modelled",
+    "unit": "Aqueduct water stress score (0-5)",
+    "src": [
+     "aqueduct3",
+     "aqueduct21"
+    ],
+    "label": "High (40-80%)",
+    "basin": "['Hawkesbury']",
+    "basins": 2,
+    "radiusKm": 25,
+    "raw": {
+     "t": 2.89,
+     "m30": 3.76,
+     "h30": 3.6,
+     "m50": 3.79,
+     "h50": 3.89
+    },
+    "change": {
+     "m30": 1.78,
+     "h30": 1.59,
+     "m50": 1.82,
+     "h50": 1.96
+    },
+    "t": 58,
+    "m30": 75,
+    "h30": 72,
+    "m50": 76,
+    "h50": 78,
+    "basis": "Aqueduct 3.0 baseline, area-weighted over 2 sub-basin(s) within 25 km; the largest is High (40-80%). Future applies Aqueduct 2.1's projected change for SSP2 RCP4.5 (moderate) or SSP2 RCP8.5 (high); 2050 uses its 2040 projection, the latest available."
+   },
+   "flood": {
+    "kind": "today",
+    "unit": "Aqueduct flood risk score (0-5)",
+    "src": [
+     "aqueduct3"
+    ],
+    "raw": {
+     "river": 2.99,
+     "coastal": 0
+    },
+    "labels": {
+     "river": "Medium - High (2 in 1,000 to 6 in 1,000)",
+     "coastal": "Low (0 to 9 in 1,000,000)"
+    },
+    "t": 60,
+    "basis": "Today is the worse of Aqueduct riverine (Medium - High (2 in 1,000 to 6 in 1,000)) and coastal (Low (0 to 9 in 1,000,000)) flood risk. No open projection of how it changes yet, so 2030 and 2050 show today's value."
+   },
+   "grid": {
+    "kind": "today",
+    "src": [
+     "wb-doingbusiness"
+    ],
+    "t": 32,
+    "raw": {
+     "saidi": 1,
+     "saifi": 0.6,
+     "year": 2019,
+     "entity": "AUS",
+     "where": "Sydney (the city the World Bank measured for AUS)"
+    },
+    "summary": "1.0 hours without power and 0.6 interruptions per customer a year in Sydney (the city the World Bank measured for AUS) (2019, World Bank)",
+    "basis": "Utility-measured outages in Sydney (the city the World Bank measured for AUS) (2019, World Bank Doing Business): 1.0 hours without power and 0.6 interruptions per customer a year. Score = average of the two on log scales (0.1 h = 0, 100 h = 100; 0.1 = 0, 30 interruptions = 100). No projection, so 2030 and 2050 show this value."
+   },
+   "other": {
+    "cyclone": {
+     "kind": "today",
+     "src": [
+      "ibtracs"
+     ],
+     "t": 0,
+     "raw": {
+      "storms": 0,
+      "severe": 0,
+      "years": 45,
+      "maxWindKt": 0,
+      "strongest": null,
+      "stormsPerDecade": 0,
+      "severePerDecade": 0
+     },
+     "summary": "no tropical storm passed within 150 km in 1980-2024 (NOAA IBTrACS)",
+     "basis": "Measured history: No tropical storm passed within 150 km in 1980-2024 (NOAA IBTrACS). Score = half storms per decade (10 = 100), half typhoon-strength passes per decade (3 = 100). No projection yet."
+    },
+    "volcano": {
+     "kind": "modelled",
+     "src": [
+      "gvp"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "within": 0,
+      "nearestKm": 874,
+      "nearest": "Newer Volcanics Province"
+     },
+     "summary": "no Holocene volcano within 100 km; nearest is Newer Volcanics Province at 874 km (Smithsonian GVP)",
+     "basis": "No Holocene volcano within 100 km; nearest is Newer Volcanics Province at 874 km (Smithsonian GVP). Score uses the closest, most recently active volcano within 100 km. Doesn't change over time."
+    },
+    "earthquake": {
+     "kind": "modelled",
+     "src": [
+      "usgs"
+     ],
+     "t": 0,
+     "geophysical": true,
+     "raw": {
+      "m6": 0,
+      "m7": 0,
+      "years": 75,
+      "perDecade": 0
+     },
+     "summary": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS)",
+     "basis": "0 earthquakes of magnitude 6+ within 300 km in 1950-2024 (0 of 7+) (USGS). Score = magnitude-6+ quakes per decade (8 = 100). Doesn't change over time."
+    },
+    "wildfire": {
+     "kind": "history",
+     "src": [
+      "firms"
+     ],
+     "t": 39,
+     "raw": {
+      "perYear": 22.7,
+      "worstYear": 2015,
+      "worstCount": 50,
+      "years": "2015-2024"
+     },
+     "summary": "22.7 vegetation fire detections a year within 25 km (2015-2024, NASA FIRMS MODIS); most in 2015 (50)",
+     "basis": "NASA FIRMS MODIS detections of vegetation fires within 25 km, 2015-2024: 22.7 a year on average, most in 2015 (50). Includes crop-residue burning. Score = 100 × √(fires a year ÷ 150), capped at 100. No projection yet, so 2030 and 2050 show this history."
+    }
+   },
+   "extra": {
+    "solar": {
+     "kwhM2Day": 4.64,
+     "src": "nasa-power-solar"
+    },
+    "facilities": {
+     "n": 40,
+     "radiusKm": 50,
+     "locatedShare": 0.94,
+     "src": "peeringdb"
+    },
+    "gridCarbon": {
+     "g": 525,
+     "year": 2025,
+     "entity": "AUS",
+     "src": "owid-ember",
+     "past": {
+      "year": 2015,
+      "g": 730
+     }
+    },
+    "electricity": {
+     "demandTWh": 286.3,
+     "year": 2025,
+     "entity": "AUS",
+     "src": "owid-ember"
+    }
+   }
+  }
+ }
+}

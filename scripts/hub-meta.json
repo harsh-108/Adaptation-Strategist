@@ -1,0 +1,561 @@
+{
+  "_note": "Per-hub inputs for build-hazards.mjs. lat/lon are hand-entered city-centre (or main campus) coordinates. iso3 = country for World Bank and Ember; iso2 = country for PeeringDB; emZone = Electricity Maps zone; eia = US balancing authority in EIA-930.",
+  "ASH": {
+    "lat": 39.04,
+    "lon": -77.49,
+    "place": "Ashburn, VA",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-MIDA-PJM",
+    "eia": "PJM"
+  },
+  "PHX": {
+    "lat": 33.45,
+    "lon": -112.07,
+    "place": "Phoenix, AZ",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-SW-AZPS",
+    "eia": "AZPS"
+  },
+  "DFW": {
+    "lat": 32.78,
+    "lon": -96.8,
+    "place": "Dallas, TX",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-TEX-ERCO",
+    "eia": "ERCO"
+  },
+  "SJC": {
+    "lat": 37.34,
+    "lon": -121.89,
+    "place": "San Jose, CA",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-CAL-CISO",
+    "eia": "CISO"
+  },
+  "QWA": {
+    "lat": 47.23,
+    "lon": -119.85,
+    "place": "Quincy, WA",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-NW-GCPD",
+    "eia": "GCPD"
+  },
+  "ATL": {
+    "lat": 33.75,
+    "lon": -84.39,
+    "place": "Atlanta, GA",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-SE-SOCO",
+    "eia": "SOCO"
+  },
+  "ORD": {
+    "lat": 41.88,
+    "lon": -87.63,
+    "place": "Chicago, IL",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-MIDA-PJM",
+    "eia": "PJM"
+  },
+  "YYZ": {
+    "lat": 43.65,
+    "lon": -79.38,
+    "place": "Toronto",
+    "iso3": "CAN",
+    "iso2": "CA",
+    "emZone": "CA-ON"
+  },
+  "QRO": {
+    "lat": 20.59,
+    "lon": -100.39,
+    "place": "Querétaro",
+    "iso3": "MEX",
+    "iso2": "MX",
+    "emZone": "MX"
+  },
+  "GRU": {
+    "lat": -23.55,
+    "lon": -46.63,
+    "place": "São Paulo",
+    "iso3": "BRA",
+    "iso2": "BR",
+    "emZone": "BR-CS"
+  },
+  "SCL": {
+    "lat": -33.45,
+    "lon": -70.67,
+    "place": "Santiago",
+    "iso3": "CHL",
+    "iso2": "CL",
+    "emZone": "CL-SEN"
+  },
+  "DUB": {
+    "lat": 53.35,
+    "lon": -6.26,
+    "place": "Dublin",
+    "iso3": "IRL",
+    "iso2": "IE",
+    "emZone": "IE"
+  },
+  "LON": {
+    "lat": 51.51,
+    "lon": -0.13,
+    "place": "London",
+    "iso3": "GBR",
+    "iso2": "GB",
+    "emZone": "GB",
+    "ukCarbon": true
+  },
+  "FRA": {
+    "lat": 50.11,
+    "lon": 8.68,
+    "place": "Frankfurt",
+    "iso3": "DEU",
+    "iso2": "DE",
+    "emZone": "DE"
+  },
+  "AMS": {
+    "lat": 52.37,
+    "lon": 4.9,
+    "place": "Amsterdam",
+    "iso3": "NLD",
+    "iso2": "NL",
+    "emZone": "NL"
+  },
+  "STO": {
+    "lat": 59.33,
+    "lon": 18.07,
+    "place": "Stockholm",
+    "iso3": "SWE",
+    "iso2": "SE",
+    "emZone": "SE-SE3"
+  },
+  "MAD": {
+    "lat": 40.42,
+    "lon": -3.7,
+    "place": "Madrid",
+    "iso3": "ESP",
+    "iso2": "ES",
+    "emZone": "ES"
+  },
+  "MIL": {
+    "lat": 45.46,
+    "lon": 9.19,
+    "place": "Milan",
+    "iso3": "ITA",
+    "iso2": "IT",
+    "emZone": "IT-NO"
+  },
+  "WAW": {
+    "lat": 52.23,
+    "lon": 21.01,
+    "place": "Warsaw",
+    "iso3": "POL",
+    "iso2": "PL",
+    "emZone": "PL"
+  },
+  "IST": {
+    "lat": 41.01,
+    "lon": 28.98,
+    "place": "Istanbul",
+    "iso3": "TUR",
+    "iso2": "TR",
+    "emZone": "TR"
+  },
+  "LOS": {
+    "lat": 6.52,
+    "lon": 3.38,
+    "place": "Lagos",
+    "iso3": "NGA",
+    "iso2": "NG",
+    "emZone": "NG"
+  },
+  "NBO": {
+    "lat": -1.29,
+    "lon": 36.82,
+    "place": "Nairobi",
+    "iso3": "KEN",
+    "iso2": "KE",
+    "emZone": "KE"
+  },
+  "JNB": {
+    "lat": -26.2,
+    "lon": 28.05,
+    "place": "Johannesburg",
+    "iso3": "ZAF",
+    "iso2": "ZA",
+    "emZone": "ZA"
+  },
+  "CAI": {
+    "lat": 30.04,
+    "lon": 31.24,
+    "place": "Cairo",
+    "iso3": "EGY",
+    "iso2": "EG",
+    "emZone": "EG"
+  },
+  "DXB": {
+    "lat": 25.2,
+    "lon": 55.27,
+    "place": "Dubai",
+    "iso3": "ARE",
+    "iso2": "AE",
+    "emZone": "AE"
+  },
+  "RUH": {
+    "lat": 24.71,
+    "lon": 46.68,
+    "place": "Riyadh",
+    "iso3": "SAU",
+    "iso2": "SA",
+    "emZone": "SA"
+  },
+  "BOM": {
+    "lat": 19.08,
+    "lon": 72.88,
+    "place": "Mumbai",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-WE"
+  },
+  "MAA": {
+    "lat": 13.08,
+    "lon": 80.27,
+    "place": "Chennai",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-SO"
+  },
+  "DEL": {
+    "lat": 28.61,
+    "lon": 77.21,
+    "place": "New Delhi",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-NO"
+  },
+  "SIN": {
+    "lat": 1.35,
+    "lon": 103.82,
+    "place": "Singapore",
+    "iso3": "SGP",
+    "iso2": "SG",
+    "emZone": "SG"
+  },
+  "KUL": {
+    "lat": 3.14,
+    "lon": 101.69,
+    "place": "Kuala Lumpur",
+    "iso3": "MYS",
+    "iso2": "MY",
+    "emZone": "MY-WM"
+  },
+  "CGK": {
+    "lat": -6.21,
+    "lon": 106.85,
+    "place": "Jakarta",
+    "iso3": "IDN",
+    "iso2": "ID",
+    "emZone": "ID"
+  },
+  "MNL": {
+    "lat": 14.6,
+    "lon": 120.98,
+    "place": "Manila",
+    "iso3": "PHL",
+    "iso2": "PH",
+    "emZone": "PH-LU"
+  },
+  "BKK": {
+    "lat": 13.76,
+    "lon": 100.5,
+    "place": "Bangkok",
+    "iso3": "THA",
+    "iso2": "TH",
+    "emZone": "TH"
+  },
+  "HKG": {
+    "lat": 22.32,
+    "lon": 114.17,
+    "place": "Hong Kong",
+    "iso3": "HKG",
+    "iso3Fallback": "CHN",
+    "iso2": "HK",
+    "emZone": "HK"
+  },
+  "SHA": {
+    "lat": 31.23,
+    "lon": 121.47,
+    "place": "Shanghai",
+    "iso3": "CHN",
+    "iso2": "CN",
+    "emZone": "CN"
+  },
+  "TPE": {
+    "lat": 25.03,
+    "lon": 121.57,
+    "place": "Taipei",
+    "iso3": "TWN",
+    "iso2": "TW",
+    "emZone": "TW"
+  },
+  "ICN": {
+    "lat": 37.57,
+    "lon": 126.98,
+    "place": "Seoul",
+    "iso3": "KOR",
+    "iso2": "KR",
+    "emZone": "KR"
+  },
+  "NRT": {
+    "lat": 35.68,
+    "lon": 139.69,
+    "place": "Tokyo",
+    "iso3": "JPN",
+    "iso2": "JP",
+    "emZone": "JP-TK"
+  },
+  "SYD": {
+    "lat": -33.87,
+    "lon": 151.21,
+    "place": "Sydney",
+    "iso3": "AUS",
+    "iso2": "AU",
+    "emZone": "AU-NSW"
+  },
+  "AKL": {
+    "lat": -36.85,
+    "lon": 174.76,
+    "place": "Auckland",
+    "iso3": "NZL",
+    "iso2": "NZ",
+    "emZone": "NZ"
+  },
+  "HYD": {
+    "lat": 17.39,
+    "lon": 78.49,
+    "place": "Hyderabad",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-SO",
+    "aliases": [
+      "cyberabad",
+      "hitec city"
+    ],
+    "areas": [
+      "South India"
+    ]
+  },
+  "BLR": {
+    "lat": 12.97,
+    "lon": 77.59,
+    "place": "Bengaluru",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-SO",
+    "aliases": [
+      "bangalore"
+    ],
+    "areas": [
+      "South India"
+    ]
+  },
+  "PNQ": {
+    "lat": 18.52,
+    "lon": 73.86,
+    "place": "Pune",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-WE",
+    "areas": [
+      "West India"
+    ]
+  },
+  "CCU": {
+    "lat": 22.57,
+    "lon": 88.36,
+    "place": "Kolkata",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-EA",
+    "aliases": [
+      "calcutta"
+    ],
+    "areas": [
+      "East India"
+    ]
+  },
+  "SGN": {
+    "lat": 10.82,
+    "lon": 106.63,
+    "place": "Ho Chi Minh City",
+    "iso3": "VNM",
+    "iso2": "VN",
+    "emZone": "VN",
+    "aliases": [
+      "saigon",
+      "hcmc"
+    ],
+    "areas": [
+      "South Vietnam"
+    ]
+  },
+  "HAN": {
+    "lat": 21.03,
+    "lon": 105.85,
+    "place": "Hanoi",
+    "iso3": "VNM",
+    "iso2": "VN",
+    "emZone": "VN",
+    "areas": [
+      "North Vietnam"
+    ]
+  },
+  "KIX": {
+    "lat": 34.69,
+    "lon": 135.5,
+    "place": "Osaka",
+    "iso3": "JPN",
+    "iso2": "JP",
+    "emZone": "JP-KN",
+    "aliases": [
+      "kansai"
+    ]
+  },
+  "MEL": {
+    "lat": -37.81,
+    "lon": 144.96,
+    "place": "Melbourne",
+    "iso3": "AUS",
+    "iso2": "AU",
+    "emZone": "AU-VIC"
+  },
+  "DOH": {
+    "lat": 25.29,
+    "lon": 51.53,
+    "place": "Doha",
+    "iso3": "QAT",
+    "iso2": "QA",
+    "emZone": "QA"
+  },
+  "CPT": {
+    "lat": -33.92,
+    "lon": 18.42,
+    "place": "Cape Town",
+    "iso3": "ZAF",
+    "iso2": "ZA",
+    "emZone": "ZA"
+  },
+  "PAR": {
+    "lat": 48.86,
+    "lon": 2.35,
+    "place": "Paris",
+    "iso3": "FRA",
+    "iso2": "FR",
+    "emZone": "FR",
+    "areas": [
+      "Western Europe"
+    ]
+  },
+  "OSL": {
+    "lat": 59.91,
+    "lon": 10.75,
+    "place": "Oslo",
+    "iso3": "NOR",
+    "iso2": "NO",
+    "emZone": "NO-NO1"
+  },
+  "ZRH": {
+    "lat": 47.38,
+    "lon": 8.54,
+    "place": "Zurich",
+    "iso3": "CHE",
+    "iso2": "CH",
+    "emZone": "CH"
+  },
+  "YUL": {
+    "lat": 45.5,
+    "lon": -73.57,
+    "place": "Montreal",
+    "iso3": "CAN",
+    "iso2": "CA",
+    "emZone": "CA-QC",
+    "aliases": [
+      "montréal"
+    ]
+  },
+  "CMH": {
+    "lat": 39.96,
+    "lon": -83,
+    "place": "Columbus",
+    "iso3": "USA",
+    "iso2": "US",
+    "emZone": "US-MIDA-PJM",
+    "eia": "PJM",
+    "aliases": [
+      "ohio"
+    ],
+    "areas": [
+      "US Midwest"
+    ]
+  },
+  "BOG": {
+    "lat": 4.71,
+    "lon": -74.07,
+    "place": "Bogotá",
+    "iso3": "COL",
+    "iso2": "CO",
+    "emZone": "CO",
+    "aliases": [
+      "bogota"
+    ]
+  },
+  "LIM": {
+    "lat": -12.05,
+    "lon": -77.04,
+    "place": "Lima",
+    "iso3": "PER",
+    "iso2": "PE",
+    "emZone": "PE"
+  },
+  "IDR": {
+    "lat": 22.72,
+    "lon": 75.83,
+    "place": "Indore",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-WE"
+  },
+  "VTZ": {
+    "lat": 17.68,
+    "lon": 83.2,
+    "place": "Visakhapatnam",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-SO",
+    "aliases": [
+      "vizag"
+    ]
+  },
+  "JAI": {
+    "lat": 26.92,
+    "lon": 75.79,
+    "place": "Jaipur",
+    "iso3": "IND",
+    "iso2": "IN",
+    "emZone": "IN-NO"
+  },
+  "SHI": {
+    "lat": 31.1,
+    "lon": 77.17,
+    "place": "Shimla",
+    "iso3": "IND",
+    "iso2": "IN"
+  }
+}

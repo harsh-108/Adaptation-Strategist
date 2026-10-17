@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Adaptation Strategist: a data-centre rack above the tagline "AI infrastructure intelligence" -->
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="#13221C"/>
+  <rect x="1.75" y="1.75" width="28.5" height="28.5" rx="7.25" fill="none" stroke="#7FD1A8" stroke-width="1.5"/>
+  <rect x="8" y="5" width="16" height="4.2" rx="1.2" fill="#E8EFEA"/>
+  <rect x="8" y="10.6" width="16" height="4.2" rx="1.2" fill="#E8EFEA"/>
+  <rect x="8" y="16.2" width="16" height="4.2" rx="1.2" fill="#E8EFEA"/>
+  <circle cx="21" cy="7.1" r="1.05" fill="#2E9E6E"/><circle cx="21" cy="12.7" r="1.05" fill="#2E9E6E"/><circle cx="21" cy="18.3" r="1.05" fill="#E07B39"/>
+  <rect x="10.2" y="6.6" width="6.5" height="1.1" rx=".5" fill="#9FB4A8"/><rect x="10.2" y="12.2" width="6.5" height="1.1" rx=".5" fill="#9FB4A8"/><rect x="10.2" y="17.8" width="6.5" height="1.1" rx=".5" fill="#9FB4A8"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#7FD1A8" text-anchor="middle">
+    <text x="16" y="24.4" font-size="2.15" letter-spacing="0">AI INFRASTRUCTURE</text>
+    <text x="16" y="27.3" font-size="2.15" letter-spacing=".22">INTELLIGENCE</text>
+  </g>
+</svg>

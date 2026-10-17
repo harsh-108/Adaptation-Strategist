@@ -1,0 +1,10 @@
+# Web app (python -m app). This is all a server needs, including My sites builds and the hazard build itself.
+# Python 3.10 or newer.
+fastapi==0.120.1
+uvicorn==0.38.0
+httpx==0.28.1
+google-genai==2.31.0
+# Reads the condensed data in scripts/derived. numpy 2.4 needs Python 3.11+, so 3.10 servers get 2.2.
+numpy==2.4.6; python_version >= "3.11"
+numpy==2.2.6; python_version < "3.11"
+google-cloud-firestore>=2.16,<3   # only used when FIRESTORE=on (Cloud Run)

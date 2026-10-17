@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adaptation Strategist</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="viz.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#/"><img src="icon.svg" width="30" height="30" alt="">Adaptation Strategist</a>
+  <nav class="main" aria-label="Main" id="nav"></nav>
+  <label class="persona"><span>I am a</span><select id="persona" aria-label="Persona"></select></label>
+</div></header>
+<div class="stripes" id="stripes" role="img"></div>
+
+<main id="view" tabindex="-1"></main>
+
+
+<script src="data.js"></script>
+<script src="hazards.js"></script>
+<script src="samples.js"></script>
+<script src="analytics.js"></script>
+<script src="gexport.js"></script>
+<script src="charts.js"></script>
+<script src="timelapse.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

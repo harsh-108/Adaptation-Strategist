@@ -1,0 +1,19 @@
+[
+  { "id": "HYD", "name": "Hyderabad", "country": "India", "region": "Asia-Pacific", "lat": 17.39, "lon": 78.49, "iso3": "IND", "iso2": "IN", "zone": "IN-SO", "areas": ["South India"], "aliases": ["cyberabad", "hitec city"] },
+  { "id": "BLR", "name": "Bengaluru", "country": "India", "region": "Asia-Pacific", "lat": 12.97, "lon": 77.59, "iso3": "IND", "iso2": "IN", "zone": "IN-SO", "areas": ["South India"], "aliases": ["bangalore"] },
+  { "id": "PNQ", "name": "Pune", "country": "India", "region": "Asia-Pacific", "lat": 18.52, "lon": 73.86, "iso3": "IND", "iso2": "IN", "zone": "IN-WE", "areas": ["West India"] },
+  { "id": "CCU", "name": "Kolkata", "country": "India", "region": "Asia-Pacific", "lat": 22.57, "lon": 88.36, "iso3": "IND", "iso2": "IN", "zone": "IN-EA", "areas": ["East India"], "aliases": ["calcutta"] },
+  { "id": "SGN", "name": "Ho Chi Minh City", "country": "Vietnam", "region": "Asia-Pacific", "lat": 10.82, "lon": 106.63, "iso3": "VNM", "iso2": "VN", "zone": "VN", "areas": ["South Vietnam"], "aliases": ["saigon", "hcmc"] },
+  { "id": "HAN", "name": "Hanoi", "country": "Vietnam", "region": "Asia-Pacific", "lat": 21.03, "lon": 105.85, "iso3": "VNM", "iso2": "VN", "zone": "VN", "areas": ["North Vietnam"] },
+  { "id": "KIX", "name": "Osaka", "country": "Japan", "region": "Asia-Pacific", "lat": 34.69, "lon": 135.50, "iso3": "JPN", "iso2": "JP", "zone": "JP-KN", "aliases": ["kansai"] },
+  { "id": "MEL", "name": "Melbourne", "country": "Australia", "region": "Asia-Pacific", "lat": -37.81, "lon": 144.96, "iso3": "AUS", "iso2": "AU", "zone": "AU-VIC" },
+  { "id": "DOH", "name": "Doha", "country": "Qatar", "region": "Africa & Middle East", "lat": 25.29, "lon": 51.53, "iso3": "QAT", "iso2": "QA", "zone": "QA" },
+  { "id": "CPT", "name": "Cape Town", "country": "South Africa", "region": "Africa & Middle East", "lat": -33.92, "lon": 18.42, "iso3": "ZAF", "iso2": "ZA", "zone": "ZA" },
+  { "id": "PAR", "name": "Paris", "country": "France", "region": "Europe", "lat": 48.86, "lon": 2.35, "iso3": "FRA", "iso2": "FR", "zone": "FR", "areas": ["Western Europe"] },
+  { "id": "OSL", "name": "Oslo", "country": "Norway", "region": "Europe", "lat": 59.91, "lon": 10.75, "iso3": "NOR", "iso2": "NO", "zone": "NO-NO1" },
+  { "id": "ZRH", "name": "Zurich", "country": "Switzerland", "region": "Europe", "lat": 47.38, "lon": 8.54, "iso3": "CHE", "iso2": "CH", "zone": "CH" },
+  { "id": "YUL", "name": "Montreal", "country": "Canada", "region": "Americas", "lat": 45.50, "lon": -73.57, "iso3": "CAN", "iso2": "CA", "zone": "CA-QC", "aliases": ["montréal"] },
+  { "id": "CMH", "name": "Columbus", "country": "United States", "region": "Americas", "lat": 39.96, "lon": -83.00, "iso3": "USA", "iso2": "US", "zone": "US-MIDA-PJM", "eia": "PJM", "areas": ["US Midwest"], "aliases": ["ohio"] },
+  { "id": "BOG", "name": "Bogotá", "country": "Colombia", "region": "Americas", "lat": 4.71, "lon": -74.07, "iso3": "COL", "iso2": "CO", "zone": "CO", "aliases": ["bogota"] },
+  { "id": "LIM", "name": "Lima", "country": "Peru", "region": "Americas", "lat": -12.05, "lon": -77.04, "iso3": "PER", "iso2": "PE", "zone": "PE" }
+]

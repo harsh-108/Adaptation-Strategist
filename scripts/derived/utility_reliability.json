@@ -1,0 +1,375 @@
+{
+ "generated": "2026-10-16",
+ "hubs": {
+  "ASH": {
+   "src": "eia861",
+   "utility": "Dominion Energy Virginia (Virginia Electric & Power Co)",
+   "note": "",
+   "years": {
+    "2020": {
+     "saidiMin": 316.999,
+     "saifi": 1.642,
+     "std": "the utility's own standard, all events"
+    },
+    "2021": {
+     "saidiMin": 318.788,
+     "saifi": 1.478,
+     "std": "the utility's own standard, all events"
+    },
+    "2022": {
+     "saidiMin": 421.475,
+     "saifi": 1.665,
+     "std": "the utility's own standard, all events"
+    },
+    "2023": {
+     "saidiMin": 190.198,
+     "saifi": 1.371,
+     "std": "the utility's own standard, all events"
+    },
+    "2024": {
+     "saidiMin": 172.1,
+     "saifi": 1.36,
+     "std": "the utility's own standard, all events"
+    }
+   },
+   "saidiH": 4.732,
+   "saifi": 1.503,
+   "standards": [
+    "the utility's own standard, all events"
+   ]
+  },
+  "PHX": {
+   "src": "eia861",
+   "utility": "Arizona Public Service",
+   "note": "Central Phoenix is APS territory; Salt River Project serves other parts of the metro.",
+   "years": {
+    "2020": {
+     "saidiMin": 84.47,
+     "saifi": 0.86,
+     "std": "IEEE 1366, all events"
+    },
+    "2021": {
+     "saidiMin": 106.53,
+     "saifi": 1.02,
+     "std": "IEEE 1366, all events"
+    },
+    "2022": {
+     "saidiMin": 138.13,
+     "saifi": 1.04,
+     "std": "IEEE 1366, all events"
+    },
+    "2023": {
+     "saidiMin": 98.58,
+     "saifi": 0.88,
+     "std": "IEEE 1366, all events"
+    },
+    "2024": {
+     "saidiMin": 87.2,
+     "saifi": 0.93,
+     "std": "IEEE 1366, all events"
+    }
+   },
+   "saidiH": 1.716,
+   "saifi": 0.946,
+   "standards": [
+    "IEEE 1366, all events"
+   ]
+  },
+  "DFW": {
+   "src": "eia861",
+   "utility": "Oncor Electric Delivery",
+   "note": "",
+   "years": {
+    "2020": {
+     "saidiMin": 487.69,
+     "saifi": 3.62,
+     "std": "the utility's own standard, all events"
+    },
+    "2021": {
+     "saidiMin": 558.81,
+     "saifi": 2.03,
+     "std": "the utility's own standard, all events"
+    },
+    "2022": {
+     "saidiMin": 231.9,
+     "saifi": 1.62,
+     "std": "the utility's own standard, all events"
+    },
+    "2023": {
+     "saidiMin": 325.52,
+     "saifi": 1.52,
+     "std": "the utility's own standard, all events"
+    },
+    "2024": {
+     "saidiMin": 532.48,
+     "saifi": 1.71,
+     "std": "the utility's own standard, all events"
+    }
+   },
+   "saidiH": 7.121,
+   "saifi": 2.1,
+   "standards": [
+    "the utility's own standard, all events"
+   ]
+  },
+  "SJC": {
+   "src": "eia861",
+   "utility": "Pacific Gas & Electric",
+   "note": "San Jose is PG&E territory; neighbouring Santa Clara has its own city utility (Silicon Valley Power).",
+   "years": {
+    "2020": {
+     "saidiMin": 444.1,
+     "saifi": 1.343,
+     "std": "IEEE 1366, all events"
+    },
+    "2021": {
+     "saidiMin": 626.3,
+     "saifi": 1.837,
+     "std": "IEEE 1366, all events"
+    },
+    "2022": {
+     "saidiMin": 326.4,
+     "saifi": 1.778,
+     "std": "IEEE 1366, all events"
+    },
+    "2023": {
+     "saidiMin": 711.7,
+     "saifi": 2.222,
+     "std": "IEEE 1366, all events"
+    },
+    "2024": {
+     "saidiMin": 509.3,
+     "saifi": 2.154,
+     "std": "IEEE 1366, all events"
+    }
+   },
+   "saidiH": 8.726,
+   "saifi": 1.867,
+   "standards": [
+    "IEEE 1366, all events"
+   ]
+  },
+  "QWA": {
+   "src": "eia861",
+   "utility": "Grant County PUD",
+   "note": "",
+   "years": {
+    "2020": {
+     "saidiMin": 100.366,
+     "saifi": 0.71,
+     "std": "the utility's own standard, all events"
+    },
+    "2021": {
+     "saidiMin": 124.403,
+     "saifi": 0.75,
+     "std": "the utility's own standard, all events"
+    },
+    "2022": {
+     "saidiMin": 75.249,
+     "saifi": 0.498,
+     "std": "the utility's own standard, all events"
+    },
+    "2023": {
+     "saidiMin": 74.552,
+     "saifi": 0.476,
+     "std": "the utility's own standard, all events"
+    },
+    "2024": {
+     "saidiMin": 116.1,
+     "saifi": 0.7,
+     "std": "the utility's own standard, all events"
+    }
+   },
+   "saidiH": 1.636,
+   "saifi": 0.627,
+   "standards": [
+    "the utility's own standard, all events"
+   ]
+  },
+  "ATL": {
+   "src": "eia861",
+   "utility": "Georgia Power",
+   "note": "",
+   "years": {
+    "2020": {
+     "saidiMin": 527.8,
+     "saifi": 1.92,
+     "std": "IEEE 1366, all events"
+    },
+    "2021": {
+     "saidiMin": 146.83,
+     "saifi": 1.28,
+     "std": "IEEE 1366, all events"
+    },
+    "2022": {
+     "saidiMin": 227.0,
+     "saifi": 1.6,
+     "std": "IEEE 1366, all events"
+    },
+    "2023": {
+     "saidiMin": 365.14,
+     "saifi": 1.75,
+     "std": "IEEE 1366, all events"
+    },
+    "2024": {
+     "saidiMin": 1516.16,
+     "saifi": 2.07,
+     "std": "IEEE 1366, all events"
+    }
+   },
+   "saidiH": 9.276,
+   "saifi": 1.724,
+   "standards": [
+    "IEEE 1366, all events"
+   ]
+  },
+  "ORD": {
+   "src": "eia861",
+   "utility": "Commonwealth Edison (ComEd)",
+   "note": "",
+   "years": {
+    "2020": {
+     "saidiMin": 341.1,
+     "saifi": 0.83,
+     "std": "IEEE 1366, all events"
+    },
+    "2021": {
+     "saidiMin": 101.6,
+     "saifi": 0.77,
+     "std": "IEEE 1366, all events"
+    },
+    "2022": {
+     "saidiMin": 65.8,
+     "saifi": 0.63,
+     "std": "IEEE 1366, all events"
+    },
+    "2023": {
+     "saidiMin": 93.3,
+     "saifi": 0.61,
+     "std": "IEEE 1366, all events"
+    },
+    "2024": {
+     "saidiMin": 131.9,
+     "saifi": 0.68,
+     "std": "IEEE 1366, all events"
+    }
+   },
+   "saidiH": 2.446,
+   "saifi": 0.704,
+   "standards": [
+    "IEEE 1366, all events"
+   ]
+  },
+  "CMH": {
+   "src": "eia861",
+   "utility": "AEP Ohio (Ohio Power Co)",
+   "note": "",
+   "years": {
+    "2020": {
+     "saidiMin": 254.6,
+     "saifi": 1.429,
+     "std": "IEEE 1366, all events"
+    },
+    "2021": {
+     "saidiMin": 231.0,
+     "saifi": 1.364,
+     "std": "IEEE 1366, all events"
+    },
+    "2022": {
+     "saidiMin": 595.3,
+     "saifi": 1.736,
+     "std": "IEEE 1366, all events"
+    },
+    "2023": {
+     "saidiMin": 326.1,
+     "saifi": 1.236,
+     "std": "IEEE 1366, all events"
+    },
+    "2024": {
+     "saidiMin": 272.2,
+     "saifi": 1.13,
+     "std": "IEEE 1366, all events"
+    }
+   },
+   "saidiH": 5.597,
+   "saifi": 1.379,
+   "standards": [
+    "IEEE 1366, all events"
+   ]
+  },
+  "YUL": {
+   "src": "hydroquebec",
+   "utility": "Hydro-Quebec",
+   "note": "Gross index: every interruption of the medium-voltage network, planned work and transmission faults included; 2023 had the April ice storm. No interruption count on the same basis, so the score uses duration only.",
+   "years": {
+    "2020": {
+     "saidiMin": 256,
+     "saifi": null,
+     "std": "Hydro-Quebec gross continuity index"
+    },
+    "2021": {
+     "saidiMin": 323,
+     "saifi": null,
+     "std": "Hydro-Quebec gross continuity index"
+    },
+    "2022": {
+     "saidiMin": 821,
+     "saifi": null,
+     "std": "Hydro-Quebec gross continuity index"
+    },
+    "2023": {
+     "saidiMin": 1008,
+     "saifi": null,
+     "std": "Hydro-Quebec gross continuity index"
+    },
+    "2024": {
+     "saidiMin": 432,
+     "saifi": null,
+     "std": "Hydro-Quebec gross continuity index"
+    }
+   },
+   "saidiH": 9.467,
+   "saifi": null,
+   "standards": [
+    "Hydro-Quebec gross continuity index, all events"
+   ]
+  },
+  "TPE": {
+   "src": "taipower",
+   "utility": "Taipower",
+   "note": "Taipower's nationwide blackouts are reported separately and not included: 2021 with them 43.516 min, 0.864 interruptions; 2022 with them 91.285 min, 0.467 interruptions.",
+   "years": {
+    "2020": {
+     "saidiMin": 15.931,
+     "saifi": 0.23,
+     "std": "Taipower headline figures (interruptions over 1 minute)"
+    },
+    "2021": {
+     "saidiMin": 16.376,
+     "saifi": 0.233,
+     "std": "Taipower headline figures (interruptions over 1 minute)"
+    },
+    "2022": {
+     "saidiMin": 14.936,
+     "saifi": 0.181,
+     "std": "Taipower headline figures (interruptions over 1 minute)"
+    },
+    "2023": {
+     "saidiMin": 15.225,
+     "saifi": 0.186,
+     "std": "Taipower headline figures (interruptions over 1 minute)"
+    },
+    "2024": {
+     "saidiMin": 15.831,
+     "saifi": 0.209,
+     "std": "Taipower headline figures (interruptions over 1 minute)"
+    }
+   },
+   "saidiH": 0.261,
+   "saifi": 0.208,
+   "standards": [
+    "Taipower headline figures (interruptions over 1 minute)"
+   ]
+  }
+ }
+}

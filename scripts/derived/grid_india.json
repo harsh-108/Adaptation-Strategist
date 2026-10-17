@@ -1,0 +1,1024 @@
+{
+ "years": [
+  "2022-23",
+  "2023-24",
+  "2024-25"
+ ],
+ "files": 818,
+ "failed": [
+  "30.12.24_NLDC_PSP: Unsupported format, or corrupt file: Expected BOF record; found b'<!DOCTYP'",
+  "31.12.24_NLDC_PSP: Unsupported format, or corrupt file: Expected BOF record; found b'<!DOCTYP'"
+ ],
+ "states": {
+  "Punjab": {
+   "2022-23": {
+    "met": 12796.599999999995,
+    "short": 72.63000000000002,
+    "days": 88,
+    "shortDays": 54,
+    "peakDays": 1,
+    "maxPeakMw": 115.0
+   },
+   "2023-24": {
+    "met": 70612.23999999995,
+    "short": 5.02,
+    "days": 366,
+    "shortDays": 12,
+    "peakDays": 2,
+    "maxPeakMw": 345.0
+   },
+   "2024-25": {
+    "met": 78302.0799999999,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Haryana": {
+   "2022-23": {
+    "met": 12018.869999999995,
+    "short": 53.14999999999999,
+    "days": 88,
+    "shortDays": 37,
+    "peakDays": 6,
+    "maxPeakMw": 363.0
+   },
+   "2023-24": {
+    "met": 63733.75999999996,
+    "short": 354.80999999999995,
+    "days": 366,
+    "shortDays": 131,
+    "peakDays": 45,
+    "maxPeakMw": 928.0
+   },
+   "2024-25": {
+    "met": 70100.98999999998,
+    "short": 29.549999999999997,
+    "days": 364,
+    "shortDays": 16,
+    "peakDays": 2,
+    "maxPeakMw": 125.0
+   }
+  },
+  "Rajasthan": {
+   "2022-23": {
+    "met": 24523.110000000004,
+    "short": 596.8599999999999,
+    "days": 88,
+    "shortDays": 60,
+    "peakDays": 33,
+    "maxPeakMw": 2078.0
+   },
+   "2023-24": {
+    "met": 106875.74000000006,
+    "short": 382.5200000000001,
+    "days": 366,
+    "shortDays": 89,
+    "peakDays": 9,
+    "maxPeakMw": 667.0
+   },
+   "2024-25": {
+    "met": 113258.44999999992,
+    "short": 330.2399999999999,
+    "days": 364,
+    "shortDays": 72,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Delhi": {
+   "2022-23": {
+    "met": 6378.45,
+    "short": 0.30000000000000004,
+    "days": 88,
+    "shortDays": 3,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 35277.98999999999,
+    "short": 0.6499999999999999,
+    "days": 366,
+    "shortDays": 8,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 38196.680000000015,
+    "short": 0.19,
+    "days": 364,
+    "shortDays": 1,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "UP": {
+   "2022-23": {
+    "met": 28775.569999999992,
+    "short": 87.37,
+    "days": 88,
+    "shortDays": 50,
+    "peakDays": 16,
+    "maxPeakMw": 525.0
+   },
+   "2023-24": {
+    "met": 147664.68000000002,
+    "short": 298.7299999999999,
+    "days": 366,
+    "shortDays": 107,
+    "peakDays": 46,
+    "maxPeakMw": 1600.0
+   },
+   "2024-25": {
+    "met": 163526.91,
+    "short": 94.19,
+    "days": 364,
+    "shortDays": 50,
+    "peakDays": 22,
+    "maxPeakMw": 845.0
+   }
+  },
+  "Uttarakhand": {
+   "2022-23": {
+    "met": 3523.87,
+    "short": 70.18000000000002,
+    "days": 88,
+    "shortDays": 82,
+    "peakDays": 24,
+    "maxPeakMw": 220.0
+   },
+   "2023-24": {
+    "met": 15698.150000000005,
+    "short": 103.27999999999997,
+    "days": 366,
+    "shortDays": 208,
+    "peakDays": 32,
+    "maxPeakMw": 240.0
+   },
+   "2024-25": {
+    "met": 16888.059999999998,
+    "short": 31.879999999999995,
+    "days": 364,
+    "shortDays": 94,
+    "peakDays": 10,
+    "maxPeakMw": 75.0
+   }
+  },
+  "HP": {
+   "2022-23": {
+    "met": 2908.75,
+    "short": 8.59,
+    "days": 88,
+    "shortDays": 32,
+    "peakDays": 2,
+    "maxPeakMw": 50.0
+   },
+   "2023-24": {
+    "met": 12084.430000000006,
+    "short": 38.88999999999999,
+    "days": 366,
+    "shortDays": 189,
+    "peakDays": 32,
+    "maxPeakMw": 43.0
+   },
+   "2024-25": {
+    "met": 12977.140000000001,
+    "short": 5.809999999999999,
+    "days": 364,
+    "shortDays": 20,
+    "peakDays": 3,
+    "maxPeakMw": 40.0
+   }
+  },
+  "J&K(UT) & Ladakh(UT)": {
+   "2022-23": {
+    "met": 5218.26,
+    "short": 19.50000000000001,
+    "days": 88,
+    "shortDays": 53,
+    "peakDays": 4,
+    "maxPeakMw": 220.0
+   },
+   "2023-24": {
+    "met": 19828.550000000007,
+    "short": 277.7599999999999,
+    "days": 366,
+    "shortDays": 308,
+    "peakDays": 110,
+    "maxPeakMw": 550.0
+   },
+   "2024-25": {
+    "met": 20255.51000000001,
+    "short": 90.83999999999993,
+    "days": 364,
+    "shortDays": 183,
+    "peakDays": 58,
+    "maxPeakMw": 400.0
+   }
+  },
+  "Chandigarh": {
+   "2022-23": {
+    "met": 335.28,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 1788.799999999999,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 1950.25,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Chhattisgarh": {
+   "2022-23": {
+    "met": 9654.721000000003,
+    "short": 12.999999999999998,
+    "days": 88,
+    "shortDays": 21,
+    "peakDays": 6,
+    "maxPeakMw": 80.0
+   },
+   "2023-24": {
+    "met": 39364.719999999965,
+    "short": 61.31999999999998,
+    "days": 365,
+    "shortDays": 53,
+    "peakDays": 27,
+    "maxPeakMw": 244.0
+   },
+   "2024-25": {
+    "met": 42700.889999999985,
+    "short": 28.299999999999997,
+    "days": 364,
+    "shortDays": 36,
+    "peakDays": 16,
+    "maxPeakMw": 168.0
+   }
+  },
+  "Gujarat": {
+   "2022-23": {
+    "met": 33917.37900000001,
+    "short": 32.49,
+    "days": 88,
+    "shortDays": 1,
+    "peakDays": 1,
+    "maxPeakMw": 1159.0
+   },
+   "2023-24": {
+    "met": 147788.52400000003,
+    "short": 27.310000000000002,
+    "days": 366,
+    "shortDays": 5,
+    "peakDays": 3,
+    "maxPeakMw": 2123.0
+   },
+   "2024-25": {
+    "met": 156059.75800000012,
+    "short": 2.59,
+    "days": 364,
+    "shortDays": 3,
+    "peakDays": 1,
+    "maxPeakMw": 313.0
+   }
+  },
+  "MP": {
+   "2022-23": {
+    "met": 24732.201000000012,
+    "short": 51.290000000000006,
+    "days": 88,
+    "shortDays": 24,
+    "peakDays": 3,
+    "maxPeakMw": 734.0
+   },
+   "2023-24": {
+    "met": 97532.61000000002,
+    "short": 122.67000000000003,
+    "days": 366,
+    "shortDays": 31,
+    "peakDays": 10,
+    "maxPeakMw": 628.0
+   },
+   "2024-25": {
+    "met": 103227.05000000009,
+    "short": 133.79999999999995,
+    "days": 364,
+    "shortDays": 86,
+    "peakDays": 29,
+    "maxPeakMw": 662.0
+   }
+  },
+  "Maharashtra": {
+   "2022-23": {
+    "met": 48480.445000000014,
+    "short": 1.13,
+    "days": 88,
+    "shortDays": 5,
+    "peakDays": 1,
+    "maxPeakMw": 89.0
+   },
+   "2023-24": {
+    "met": 204109.56700000004,
+    "short": 177.54000000000002,
+    "days": 366,
+    "shortDays": 68,
+    "peakDays": 15,
+    "maxPeakMw": 2986.0
+   },
+   "2024-25": {
+    "met": 207616.91199999995,
+    "short": 58.580000000000005,
+    "days": 364,
+    "shortDays": 27,
+    "peakDays": 17,
+    "maxPeakMw": 3311.0
+   }
+  },
+  "Goa": {
+   "2022-23": {
+    "met": 1173.06232,
+    "short": 0.72,
+    "days": 88,
+    "shortDays": 4,
+    "peakDays": 2,
+    "maxPeakMw": 25.0
+   },
+   "2023-24": {
+    "met": 5036.640987199997,
+    "short": 2.06,
+    "days": 366,
+    "shortDays": 8,
+    "peakDays": 2,
+    "maxPeakMw": 40.0
+   },
+   "2024-25": {
+    "met": 5351.228955200002,
+    "short": 6.909999999999999,
+    "days": 364,
+    "shortDays": 10,
+    "peakDays": 6,
+    "maxPeakMw": 40.0
+   }
+  },
+  "DNHDDPDCL": {
+   "2022-23": {
+    "met": 2455.529859999999,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 10471.785419999995,
+    "short": 2.3,
+    "days": 366,
+    "shortDays": 1,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 10815.19106,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "AMNSIL": {
+   "2022-23": {
+    "met": 1520.6780799999997,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 6739.606269999999,
+    "short": 0.0,
+    "days": 365,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 6430.006339999996,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "BALCO": {
+   "2022-23": {
+    "met": 1085.6307119999988,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 4534.577420360011,
+    "short": 0.0,
+    "days": 365,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 4595.122720729975,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Andhra Pradesh": {
+   "2022-23": {
+    "met": 18623.819999999996,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 80776.56000000007,
+    "short": 52.79600000000001,
+    "days": 366,
+    "shortDays": 16,
+    "peakDays": 2,
+    "maxPeakMw": 208.0
+   },
+   "2024-25": {
+    "met": 79260.71000000008,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Telangana": {
+   "2022-23": {
+    "met": 22687.560000000005,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 85768.66999999997,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 89100.23000000004,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Karnataka": {
+   "2022-23": {
+    "met": 23044.16,
+    "short": 21.009999999999998,
+    "days": 88,
+    "shortDays": 13,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 95243.40000000002,
+    "short": 151.15000000000003,
+    "days": 366,
+    "shortDays": 32,
+    "peakDays": 4,
+    "maxPeakMw": 850.0
+   },
+   "2024-25": {
+    "met": 92678.5099999999,
+    "short": 3.9,
+    "days": 364,
+    "shortDays": 2,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Kerala": {
+   "2022-23": {
+    "met": 7090.280000000002,
+    "short": 3.0700000000000003,
+    "days": 88,
+    "shortDays": 3,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 30914.40999999999,
+    "short": 1.72,
+    "days": 366,
+    "shortDays": 4,
+    "peakDays": 2,
+    "maxPeakMw": 200.0
+   },
+   "2024-25": {
+    "met": 31475.310000000016,
+    "short": 11.049999999999999,
+    "days": 364,
+    "shortDays": 15,
+    "peakDays": 7,
+    "maxPeakMw": 450.0
+   }
+  },
+  "Tamil Nadu": {
+   "2022-23": {
+    "met": 28342.570000000003,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 126549.12000000007,
+    "short": 29.25,
+    "days": 366,
+    "shortDays": 5,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 129192.32,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Puducherry": {
+   "2022-23": {
+    "met": 757.48,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 3481.479999999999,
+    "short": 0.9,
+    "days": 366,
+    "shortDays": 5,
+    "peakDays": 3,
+    "maxPeakMw": 50.0
+   },
+   "2024-25": {
+    "met": 3557.780000000001,
+    "short": 0.82,
+    "days": 364,
+    "shortDays": 6,
+    "peakDays": 4,
+    "maxPeakMw": 31.5
+   }
+  },
+  "Bihar": {
+   "2022-23": {
+    "met": 8092.359999999997,
+    "short": 56.32699999999999,
+    "days": 88,
+    "shortDays": 87,
+    "peakDays": 25,
+    "maxPeakMw": 643.0
+   },
+   "2023-24": {
+    "met": 40952.32300000002,
+    "short": 492.92765999999983,
+    "days": 366,
+    "shortDays": 295,
+    "peakDays": 111,
+    "maxPeakMw": 1092.0
+   },
+   "2024-25": {
+    "met": 44446.06099999999,
+    "short": 170.23079999999996,
+    "days": 364,
+    "shortDays": 226,
+    "peakDays": 56,
+    "maxPeakMw": 747.0
+   }
+  },
+  "DVC": {
+   "2022-23": {
+    "met": 6514.089999999999,
+    "short": 0.838,
+    "days": 88,
+    "shortDays": 1,
+    "peakDays": 1,
+    "maxPeakMw": 47.0
+   },
+   "2023-24": {
+    "met": 26783.771400000016,
+    "short": 0.31,
+    "days": 366,
+    "shortDays": 1,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 25739.415500000017,
+    "short": 0.8140000000000001,
+    "days": 364,
+    "shortDays": 2,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Jharkhand": {
+   "2022-23": {
+    "met": 2477.7999999999997,
+    "short": 209.47700000000003,
+    "days": 88,
+    "shortDays": 86,
+    "peakDays": 45,
+    "maxPeakMw": 331.0
+   },
+   "2023-24": {
+    "met": 12238.704999999998,
+    "short": 499.56899999999985,
+    "days": 366,
+    "shortDays": 306,
+    "peakDays": 95,
+    "maxPeakMw": 419.0
+   },
+   "2024-25": {
+    "met": 14938.526299999989,
+    "short": 67.85500000000003,
+    "days": 364,
+    "shortDays": 82,
+    "peakDays": 6,
+    "maxPeakMw": 414.0
+   }
+  },
+  "Odisha": {
+   "2022-23": {
+    "met": 9245.719999999998,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 41170.214000000014,
+    "short": 2.8259999999999996,
+    "days": 366,
+    "shortDays": 10,
+    "peakDays": 4,
+    "maxPeakMw": 220.0
+   },
+   "2024-25": {
+    "met": 42100.9622,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "West Bengal": {
+   "2022-23": {
+    "met": 12884.130000000001,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 65009.57289999999,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 70379.49200000001,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Sikkim": {
+   "2022-23": {
+    "met": 152.90999999999997,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 529.27,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 540.55,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Arunachal Pradesh": {
+   "2022-23": {
+    "met": 221.26000000000005,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 1012.7199999999996,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 1051.37,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Assam": {
+   "2022-23": {
+    "met": 2321.9900000000002,
+    "short": 10.580000000000004,
+    "days": 88,
+    "shortDays": 30,
+    "peakDays": 4,
+    "maxPeakMw": 150.0
+   },
+   "2023-24": {
+    "met": 12275.730000000003,
+    "short": 106.22999999999996,
+    "days": 366,
+    "shortDays": 113,
+    "peakDays": 38,
+    "maxPeakMw": 414.0
+   },
+   "2024-25": {
+    "met": 12826.549999999994,
+    "short": 4.729999999999999,
+    "days": 364,
+    "shortDays": 18,
+    "peakDays": 1,
+    "maxPeakMw": 10.0
+   }
+  },
+  "Manipur": {
+   "2022-23": {
+    "met": 265.3500000000001,
+    "short": 1.7500000000000002,
+    "days": 88,
+    "shortDays": 18,
+    "peakDays": 5,
+    "maxPeakMw": 11.0
+   },
+   "2023-24": {
+    "met": 994.8199999999998,
+    "short": 15.169999999999998,
+    "days": 366,
+    "shortDays": 75,
+    "peakDays": 38,
+    "maxPeakMw": 34.0
+   },
+   "2024-25": {
+    "met": 1068.6099999999997,
+    "short": 10.847000000000001,
+    "days": 364,
+    "shortDays": 57,
+    "peakDays": 27,
+    "maxPeakMw": 59.0
+   }
+  },
+  "Meghalaya": {
+   "2022-23": {
+    "met": 595.0800000000003,
+    "short": 4.01,
+    "days": 88,
+    "shortDays": 15,
+    "peakDays": 4,
+    "maxPeakMw": 40.0
+   },
+   "2023-24": {
+    "met": 2081.689999999999,
+    "short": 171.01,
+    "days": 366,
+    "shortDays": 249,
+    "peakDays": 179,
+    "maxPeakMw": 92.0
+   },
+   "2024-25": {
+    "met": 2061.8200000000006,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Mizoram": {
+   "2022-23": {
+    "met": 169.12999999999997,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 697.79,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 729.6599999999995,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Nagaland": {
+   "2022-23": {
+    "met": 190.57999999999998,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 919.9200000000009,
+    "short": 0.03,
+    "days": 366,
+    "shortDays": 2,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 964.9000000000005,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Tripura": {
+   "2022-23": {
+    "met": 344.98999999999995,
+    "short": 0.0,
+    "days": 88,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 1760.2400000000014,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 1833.2400000000014,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Railways_NR ISTS": {
+   "2022-23": {
+    "met": 32.61,
+    "short": 0.0,
+    "days": 16,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2023-24": {
+    "met": 1296.4000000000003,
+    "short": 0.0,
+    "days": 366,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 1482.7599999999995,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "Railways_ER ISTS": {
+   "2023-24": {
+    "met": 47.64999999999999,
+    "short": 0.0,
+    "days": 337,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   },
+   "2024-25": {
+    "met": 56.50999999999997,
+    "short": 0.0,
+    "days": 364,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "0": {
+   "2023-24": {
+    "met": 12.48920582,
+    "short": 0.0,
+    "days": 1,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "RIL JAMNAGAR": {
+   "2024-25": {
+    "met": 435.2925200000002,
+    "short": 0.0,
+    "days": 118,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  },
+  "RIL Jamnagar": {
+   "2024-25": {
+    "met": 5.6,
+    "short": 0.0,
+    "days": 1,
+    "shortDays": 0,
+    "peakDays": 0,
+    "maxPeakMw": 0.0
+   }
+  }
+ }
+}

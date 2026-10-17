@@ -1,0 +1,28 @@
+# systemd unit for the Adaptation Atlas (Python/FastAPI) on a Linux server (e.g. AWS EC2, Ubuntu).
+# Install: sudo cp deploy/adaptation-atlas.service /etc/systemd/system/ && sudo systemctl daemon-reload
+#          sudo systemctl enable --now adaptation-atlas
+# Logs:    journalctl -u adaptation-atlas -f
+[Unit]
+Description=Adaptation Atlas (Python/FastAPI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=atlas
+Group=atlas
+WorkingDirectory=/opt/adaptation-atlas
+# Keys and settings come from /opt/adaptation-atlas/.env (read by the app); these lines win over it.
+# HOST=127.0.0.1: only nginx on this machine can reach the app. Without nginx use HOST=0.0.0.0 TRUST_PROXY=0.
+Environment=PORT=6004 HOST=127.0.0.1 PYTHONUNBUFFERED=1
+ExecStart=/opt/adaptation-atlas/.venv/bin/python -m app
+Restart=on-failure
+RestartSec=5
+# Hardening. The app writes only inside /opt/adaptation-atlas (Manage hubs page, open-data cache).
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

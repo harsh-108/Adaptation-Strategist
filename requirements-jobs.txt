@@ -1,0 +1,10 @@
+# Extra packages for rebuilding the big data sources on your own PC (not needed on the server):
+#   pip install -r requirements.txt -r requirements-jobs.txt
+# tifffile: STORM cyclone maps (python -m jobs.sources.storm); h5py: IPCC sea level (python -m jobs.sources.sealevel);
+# xlrd: Grid-India daily reports (python -m jobs.sources.gridindia). Python 3.11 or newer.
+tifffile==2026.3.3
+h5py==3.16.0
+xlrd==2.0.1
+# Earth Engine and BigQuery jobs (python -m jobs.check_gcp), once Google Cloud is set up.
+earthengine-api==1.7.48
+google-cloud-bigquery==3.46.1
