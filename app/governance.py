@@ -171,9 +171,10 @@ PERSONA_NAME = {"op": "Data centre operator", "colo": "Colocation & hyperscaler"
 
 def requests(limit: int = 200) -> list[dict]:
     if fsdb.ON:
-        return _guard(lambda: _fs().list("requests", order_by="at", desc=True, limit=limit))
+        rows = _guard(lambda: _fs().list("requests", order_by="at", desc=True, limit=limit))
+        return sorted(rows, key=lambda r: (r.get("at") or 0, r.get("id") or ""), reverse=True)   # same instant: the higher number is newer
     with auth._db() as con:
-        return [_req(r) for r in con.execute("SELECT * FROM requests ORDER BY at DESC LIMIT ?", (limit,))]
+        return [_req(r) for r in con.execute("SELECT * FROM requests ORDER BY at DESC, id DESC LIMIT ?", (limit,))]
 
 
 def create_request(b: dict) -> dict:
