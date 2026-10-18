@@ -28,7 +28,7 @@ What the script creates in your project:
 
 ## What we swapped
 
-Sixteen parts of the original app now run on Google services. Every swap keeps the original source as a fallback, so the app still works with no Google keys. The original folder `adaptation-atlas` is untouched; all changes are in the copy `adaptation-atlas-gcp`.
+Fourteen parts of the original app now run on Google services (rows 1 to 10 and 13 to 16). Rows 11 and 12 are prepared but **not used**: the data the app ships was built from the original downloads, not from BigQuery. Every swap keeps the original source as a fallback, so the app still works with no Google keys. The original folder `adaptation-atlas` is untouched; all changes are in the copy `adaptation-atlas-gcp`.
 
 | # | Part | Before (original app) | After (Google) | Files changed | If Google is off or fails |
 | --- | --- | --- | --- | --- | --- |
@@ -42,8 +42,8 @@ Sixteen parts of the original app now run on Google services. Every swap keeps t
 | 8 | Hub search in Manage hubs | Open-Meteo geocoding | Google Geocoding API | `app/gmaps.py`, `app/main.py` | Open-Meteo geocoding |
 | 9 | Impact export | Download CSV and Print or save as PDF | Also Export to Google Sheets and Create brief in Google Docs, saved to the visitor's Drive | `public/gexport.js` (new), `public/app.js`, `public/index.html` | CSV and PDF buttons, unchanged |
 | 10 | Earth view · Data centres map | Leaflet with OpenStreetMap tiles | Google Maps JavaScript API with clusters, popups, risk rings and satellite view | `public/app.js` | OpenStreetMap map (also kept as a switch for the density layer) |
-| 11 | Cyclone data job | NOAA IBTrACS download (145 MB) | BigQuery public dataset `noaa_hurricanes`, used only if it covers 1980 to 2024 | `jobs/bq.py` (new), `jobs/sources/cyclones.py` | NOAA download |
-| 12 | Data centre locations job | OpenStreetMap extract from the japan-data-centers project | BigQuery `geo_openstreetmap` with Overture country borders, used only when the extract is missing | `jobs/sources/facilities.py`, `jobs/check_gcp.py` | Extract stays first |
+| 11 | Cyclone data job (**prepared, not used**) | NOAA IBTrACS download (145 MB) | Optional: BigQuery public dataset `noaa_hurricanes`, used only if it covers 1980 to 2024 | `jobs/bq.py` (new), `jobs/sources/cyclones.py` | NOAA download (what the shipped data uses) |
+| 12 | Data centre locations job (**prepared, not used**) | OpenStreetMap extract from the japan-data-centers project | Optional: BigQuery `geo_openstreetmap` with Overture country borders, used only when the extract is missing | `jobs/sources/facilities.py`, `jobs/check_gcp.py` | Extract stays first (what the shipped data uses) |
 | 13 | Health check | `/api/health` lists AI and data sources | Adds a `google` block showing which Google services are connected | `app/main.py` | Not applicable |
 | 14 | Decision records | SQLite tables for approvals, audit trail, meter summaries and assumptions | Firestore, each change one transaction that also moves the audit trail's head, so the fingerprint chain can't break; records already in SQLite are copied across once | `app/fsdb.py` (new), `app/governance.py`, `firestore.rules` (new) | SQLite, as before (`FIRESTORE` unset) |
 | 15 | Public address | The Cloud Run address | Firebase Hosting `PROJECT.web.app` in front of Cloud Run | `firebase.json` (new), `deploy/gcp/deploy.ps1`, `app/main.py` (`ALLOWED_ORIGINS`) | The Cloud Run address still works |
@@ -55,7 +55,7 @@ Also added, not swaps: the Earth view **Timelapse** tab (NASA Blue Marble imager
 
 **Safety for the public demo:** hub and news-feed editing is switched off (`DEMO_LOCK_HUBS=1`, the page says so; sites, approvals and assumptions stay open), the deployed app starts with a clean database (your local records and any old sign-in accounts stay on your PC), and every save waits until it is copied to the bucket before answering.
 
-**What is tested:** every swap passed with simulated Google responses, and every fallback works. `tests/test_strategist.py` runs 62 server checks on SQLite and 65 with `--firestore` (on a stand-in store; Firestore's emulator needs Java). Nothing has run against live Google services yet, because no project is set up. Step 5 below is that check.
+**What is tested:** every swap passed with simulated Google responses, and every fallback works. `tests/test_strategist.py` runs 63 server checks on SQLite and 67 with `--firestore` (on a stand-in store; Firestore's emulator needs Java), all passing on 18 October 2026. The live deployment was checked the same day: its health page reports every Google service in rows 1 to 10 and 13 to 16 as connected, and live readings came from the Google Weather, Air Quality and Geocoding APIs. Step 5 below is how to repeat that check.
 
 ## Step 1: Install the Google Cloud CLI and sign in
 
@@ -129,7 +129,7 @@ GOOGLE_OAUTH_CLIENT_ID=1234567890-abc.apps.googleusercontent.com
 GA_MEASUREMENT_ID=G-ABC123XYZ
 ```
 
-Keep your existing keys (Groq, OpenAQ, Electricity Maps, EIA) as they are; the script copies them to Secret Manager too. `GEMINI_API_KEY` isn't used on Cloud Run, because Gemini runs on Vertex AI there.
+Keep your existing keys (Groq, and optionally OpenAQ, Electricity Maps and EIA) as they are; the script copies them to Secret Manager too. On the public demo only Groq is set, so OpenAQ and Electricity Maps show "off" and EIA uses its demo key. `GEMINI_API_KEY` isn't used on Cloud Run, because Gemini runs on Vertex AI there.
 
 ## Step 4: Run the deploy script
 
@@ -216,7 +216,7 @@ None of these is needed for the demo.
 
 For judging, a public link is simpler; keep the private setup for real use.
 
-**BigQuery data jobs (swaps 11 and 12).** These rebuild the data files on your PC; they don't run on Cloud Run.
+**BigQuery data jobs (swaps 11 and 12, optional and not used so far).** These rebuild the data files on your PC; they don't run on Cloud Run. The data the app ships today was built from the original downloads, so you only need this to try the BigQuery path.
 
 1. Add `GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID` to `.env`.
 2. Sign in for jobs: `gcloud auth application-default login`.
@@ -245,7 +245,7 @@ Each query is dry-run first and skipped above 200 GB (`BQ_MAX_GB`), so it stays 
 | Vertex AI Gemini | No free tier | Paid from trial or hackathon credits |
 | Weather, Air Quality, Geocoding, Maps JavaScript | A free monthly cap per API | ₹0 at demo traffic |
 | Sheets and Docs APIs | Free | ₹0 |
-| BigQuery | 1 TB of queries, 10 GB storage | ₹0 |
+| BigQuery (optional, not used today) | 1 TB of queries, 10 GB storage | ₹0 |
 
 The app limits each visitor to 40 AI requests every 10 minutes, which protects your credits on a public link.
 
