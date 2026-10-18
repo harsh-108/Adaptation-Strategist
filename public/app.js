@@ -94,7 +94,7 @@ const G={
  approval:["Approval route","Who signs off, from the approval rules (cost, block size, country).","Each step needs a reason and is logged.","Strategist approval rules"],
  audit:["Tamper-evident audit log","Each entry carries a SHA-256 fingerprint of the one before.","'Verify audit trail' recomputes them all on the server.","Kept on the server, shared by the team"],
  suit:["Suitability","0–100, higher is better: 100 minus the weighted average of the hazards and grid carbon you care about.","Grid carbon: 0 g = 0, 800 g = 100.","Hazard data; Ember"],
- pair:["Backup pair score","0–100, higher is better: 100 − backup's risk − 15 per shared high hazard − 5 for the same grid.","300–3,000 km apart.","Hazard data"],
+ pair:["Backup pair score","0–100, higher is better: 100 − backup's risk − 15 per shared high hazard − 5 if both are in the same country (same national grid).","300–3,000 km apart.","Hazard data"],
  whatif:["Growth what-if","Electricity, emissions and water from steady data centre growth.","MW × 70% load × 8,760 h × PUE.","Ember; Aqueduct"],
  kanon:["k-anonymity","Pooled figures only shown for groups of 5+ operators.","Smaller groups are suppressed.","Pooling rule"],
  persona:["Personas, no login","Pick who you are at the top right; the menu shows that persona's sections.","There are no accounts: the choice is remembered in this browser only.","Merged app"]
@@ -1243,7 +1243,7 @@ function srcRegister(){
     {n:"NASA POWER API",u:"Warming stripes: yearly mean temperature 1991–2020 for the place in use",l:"NASA open data",s:known?OK:null},
     {n:"GDACS",u:"Disaster alerts near a place, last 180 days",l:"GDACS terms (EC JRC)",s:st(P.news)},
     {n:"NASA EONET",u:"Natural events near a place",l:"NASA open data",s:st(P.news)},
-    {n:"ReliefWeb",u:"Humanitarian reports for the country",l:"ReliefWeb terms (UN OCHA)",s:st(P.news)},
+    {n:"ReliefWeb",u:"Humanitarian reports for the country",l:"ReliefWeb terms (UN OCHA)",s:st(P.news&&L.reliefweb,"Needs an approved app name")},
     {n:"News feeds added in Manage hubs (RSS)",u:"Local news near a place",l:"Each publisher's terms",s:known?["ok","Admin-managed"]:null},
     {n:"Google Geocoding API",u:"Place search in My sites and Manage hubs",l:"Google Maps Platform terms",s:st(G.geocoding)},
     {n:"Open-Meteo geocoding",u:"Place search when Google Geocoding isn't set up",l:"CC BY 4.0",s:alt(G.geocoding)},
