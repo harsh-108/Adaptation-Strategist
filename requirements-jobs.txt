@@ -5,6 +5,6 @@
 tifffile==2026.3.3
 h5py==3.16.0
 xlrd==2.0.1
-# Earth Engine and BigQuery jobs (python -m jobs.check_gcp), once Google Cloud is set up.
+# Optional, not used for the current data: Earth Engine and BigQuery jobs (python -m jobs.check_gcp).
 earthengine-api==1.7.48
 google-cloud-bigquery==3.46.1

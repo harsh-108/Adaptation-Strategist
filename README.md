@@ -6,6 +6,8 @@ A climate-adaptation planner for data centre growth, for four personas: **data c
 
 **Try it:** `https://adaptation-strategist-2026.web.app` (Firebase Hosting) or the same app at its Cloud Run address, `https://atlas-web-….run.app`. There is **no login and no test account**: pick a persona at the top right. Hub editing is switched off on the public demo so the shared data stays intact; everything else (sites, approvals, assumptions, exports) works.
 
+**Architecture:** [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains every Google Cloud service, data source, AI feature and flow, with diagrams.
+
 **How Google Cloud is used**
 
 | Service | What it does here |
@@ -16,7 +18,11 @@ A climate-adaptation planner for data centre growth, for four personas: **data c
 | **Gemini on Vertex AI** | Powers the **Ask Gemini** chat window (the ✦ button on every screen). Planning requests ("where should we build…", "compare…") are turned into settings through a JSON schema whose values are limited to the app's own lists, with buttons that open the right screen. Questions about a place are answered from that place's measured scores and evidence, with follow-ups kept per place. One model call per message. |
 | **Google Analytics 4** (Firebase project) | Counts which screens and features are used, only after the visitor presses **Allow analytics**. Events carry short codes (persona, step, format), never typed text or names. |
 | Secret Manager, Cloud Storage, Cloud Scheduler | Keys (never in code), the saved sites/alerts file and hub files, and the 30-minute alert check. |
-| Maps Platform, Sheets and Docs APIs, BigQuery | Live weather, air quality and place search; export of the impact report to the visitor's own Drive; public datasets in the offline data jobs. |
+| Maps Platform: Weather, Air Quality, Geocoding, Maps JavaScript APIs | Live weather and air quality, place search, and Google Maps on the Data centres map. |
+| Google Sheets and Docs APIs, Google Identity Services | Export of the impact report to the visitor's own Drive, with their own Google sign-in. |
+| Cloud Build, Artifact Registry, IAM, Cloud Logging | Builds and stores the container on each deploy; the app runs as its own service account with minimal roles; request and app logs. |
+
+The full checked list (19 libraries, 18 Google services, 9 outside services) is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), section 3. BigQuery and Earth Engine are prepared in the offline data jobs but **not used** for the data the app ships today.
 
 **Sample questions and walkthroughs**
 
@@ -152,27 +158,27 @@ It also writes `scripts/coverage.md`, listing which hazards have data for each h
 
 **Warming stripes** under the header follow the place the persona is working on: NASA POWER yearly mean temperature 1991-2020 (`GET /api/stripes?lat=&lon=`, fetched once per place and cached in `instance/stripes/`).
 
-**Live readings** (`GET /api/live/{hub}`, cached an hour per hub, 5 minutes after a failure): Open-Meteo forecast, flood (GloFAS) and air quality (no key); OpenAQ (`OPENAQ_API_KEY`); Electricity Maps (`ELECTRICITYMAPS_API_KEY`), or the GB Carbon Intensity API for London (no key); EIA grid demand for US hubs (`EIA_API_KEY`, otherwise the rate-limited `DEMO_KEY`). A missing key shows "Not configured".
+**Live readings** (`GET /api/live/{hub}`, cached an hour per hub, 5 minutes after a failure): Open-Meteo forecast, flood (GloFAS) and air quality (no key); OpenAQ (`OPENAQ_API_KEY`); Electricity Maps (`ELECTRICITYMAPS_API_KEY`), or the GB Carbon Intensity API for London (no key); EIA grid demand for US hubs (`EIA_API_KEY`, otherwise the rate-limited `DEMO_KEY`). A missing key shows "Not configured". On the public demo, Google Weather and Air Quality answer first (Open-Meteo is the fallback); OpenAQ and Electricity Maps are off because their keys aren't set.
 
 **Licences and attribution:** Open-Meteo's free API is for non-commercial use only (commercial use needs their paid plan). Aqueduct, World Bank CCKP and Ember are CC BY 4.0. STORM (Bloemendaal et al.), IPCC AR6 sea level (Garner et al.) and World Bank data are CC BY 4.0. OpenStreetMap data is ODbL ("© OpenStreetMap contributors"); the map tiles are OpenStreetMap's own (and OSM France's Humanitarian style), used under their tile policies. Credit NASA LaRC POWER, NASA FIRMS, PeeringDB, NOAA IBTrACS (Knapp et al. 2010), the Smithsonian Global Volcanism Program and USGS. All are listed under "Data sources" in the app.
 
 ### Still to come
 
 - **CEA**: CEA's own power supply position reports now sit behind a login and captcha, so the atlas uses Grid-India's daily reports (the same measurements, published openly) instead.
-- **Earth Engine and BigQuery**: waiting for the Google Cloud project (below).
+- **Earth Engine and BigQuery**: the code is ready (below) but not used yet. The data the app ships was built from the downloads listed above.
 
-### BigQuery public datasets in the data jobs
+### BigQuery public datasets in the data jobs (optional, not used for the shipped data)
 
-With `GOOGLE_CLOUD_PROJECT` set (and `GOOGLE_APPLICATION_CREDENTIALS` or `gcloud auth application-default login`), two jobs read BigQuery first and keep their downloads as fallback (`jobs/bq.py`):
+This path has not been used to build the current data files; they come from the original downloads. With `GOOGLE_CLOUD_PROJECT` set (and `GOOGLE_APPLICATION_CREDENTIALS` or `gcloud auth application-default login`), two jobs read BigQuery first and keep their downloads as fallback (`jobs/bq.py`):
 
 - **Cyclones** (`jobs/sources/cyclones.py`, on `--fresh` or when `scripts/derived/ibtracs.npz` is missing): IBTrACS tracks from `bigquery-public-data.noaa_hurricanes.hurricanes`, used only if that copy covers every season scored (1980–2024); otherwise the NOAA download. Same filters and track order, so the storms are identical.
 - **Data centres** (`jobs/sources/facilities.py`): the japan-data-centers extract stays first, because it adds a facility kind OpenStreetMap doesn't have. If the extract is missing, OpenStreetMap is read from `bigquery-public-data.geo_openstreetmap.planet_features` with countries from `bigquery-public-data.overture_maps.division_area`, instead of stopping.
 
 Each query is dry-run first and skipped above `BQ_MAX_GB` (default 200). `python -m jobs.check_gcp` confirms the tables can be read.
 
-### Earth Engine and BigQuery (next data jobs)
+### Earth Engine and BigQuery (planned data jobs, not built yet)
 
-The next data sources (NEX-GDDP-CMIP6, ERA5-Land, Aqueduct 4.0, JRC surface water, Global Flood Database, GRACE, power plants, GHSL, Dynamic World, MODIS burned area) run through Google Earth Engine and BigQuery. Once your Google Cloud project is set up, add to `.env`:
+The planned next data sources (NEX-GDDP-CMIP6, ERA5-Land, Aqueduct 4.0, JRC surface water, Global Flood Database, GRACE, power plants, GHSL, Dynamic World, MODIS burned area) would run through Google Earth Engine and BigQuery. Today only the access check below exists. Once your Google Cloud project is set up, add to `.env`:
 
 ```
 GOOGLE_CLOUD_PROJECT=your-project-id
@@ -189,7 +195,7 @@ Keep the key file outside the project folder so it is never packaged or deployed
 
 ## Adding hubs
 
-**In the app:** open **Manage hubs**. Search for a city ("Kochi, India" narrows to a country; Open-Meteo geocoding fills in the coordinates, the World Bank API the country code and region, and Electricity Maps the grid zones), check the details, and save. Saving writes the hub files and fetches its open data (about 10 to 60 seconds); Edit and Remove are in the list. Leaving the page reloads the atlas with the changes.
+**In the app:** open **Manage hubs**. Search for a city ("Kochi, India" narrows to a country; Google Geocoding fills in the coordinates, with Open-Meteo geocoding as the fallback; the World Bank API the country code and region; and Electricity Maps' public zone list, which needs no key, the grid zones), check the details, and save. Saving writes the hub files and fetches its open data (about 10 to 60 seconds); Edit and Remove are in the list. Leaving the page reloads the atlas with the changes.
 
 Saving changes the server's own files. With no login anyone who can open the app can do it (the page is hidden from the policy maker persona only), so keep the server internal. On Cloud Run changes are lost at the next deploy.
 
@@ -315,7 +321,7 @@ Add other keys (Groq, OpenAQ, Electricity Maps, EIA, Ember) to `--set-secrets` t
 | `RELIEFWEB_APPNAME` | Adds UN OCHA ReliefWeb reports to Recent events and news (ReliefWeb approves app names: apidoc.reliefweb.int) | off |
 | `ATLAS_INSTANCE_DIR` | Where the team's records are stored, e.g. a throwaway copy for testing | `instance/` |
 | `OPENAQ_API_KEY`, `ELECTRICITYMAPS_API_KEY`, `EIA_API_KEY`, `EMBER_API_KEY` | Live readings and grid carbon | none |
-| `GOOGLE_CLOUD_PROJECT`, `GOOGLE_APPLICATION_CREDENTIALS` | Earth Engine and BigQuery data jobs | none |
+| `GOOGLE_CLOUD_PROJECT`, `GOOGLE_APPLICATION_CREDENTIALS` | Optional Earth Engine and BigQuery data jobs (not used for the current data) | none |
 
 `/api/health` reports what is connected. Each instance allows 40 AI requests per visitor per 10 minutes, to protect your quota on a public link.
 
