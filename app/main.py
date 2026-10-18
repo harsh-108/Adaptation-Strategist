@@ -148,7 +148,7 @@ async def health(request: Request):
             "login": False, "models": ["mock"] if MOCK else GEMINI_MODELS, "groqModels": GROQ_MODELS if GROQ_KEY else [], "server": "python",
             "data": {"hazards": store.HAZ is not None, "generated": (store.HAZ or {}).get("generated"),
                      "live": {"openMeteo": True, "openaq": bool(env("OPENAQ_API_KEY")), "electricityMaps": bool(env("ELECTRICITYMAPS_API_KEY")),
-                              "eia": "key" if env("EIA_API_KEY") else "demo", "ukCarbon": True}},
+                              "eia": "key" if env("EIA_API_KEY") else "demo", "ukCarbon": True, "reliefweb": bool(env("RELIEFWEB_APPNAME"))}},
             "google": {"cloudRun": ON_CLOUD, "vertexAI": ai.mode == "vertex", "cloudStorage": gcp.enabled(), "scheduler": bool(gcp.TASK_TOKEN),
                        "weather": gmaps.enabled(), "airQuality": gmaps.enabled(), "geocoding": gmaps.enabled(),
                        "sheetsDocsExport": bool(env("GOOGLE_OAUTH_CLIENT_ID")), "mapsJavaScript": bool(env("GOOGLE_MAPS_BROWSER_KEY")),
